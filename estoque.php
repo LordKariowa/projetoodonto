@@ -16,6 +16,7 @@
 		<button type="button" class="btn btn-primary btn-md ml-5" data-toggle="modal" data-target="#modal1">Cadastro de Produtos</button>
         <button type="button" class="btn btn-dark">Imprimir</button>
 
+
         <!--Modal-->
 			<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" role="document">
@@ -31,18 +32,33 @@
 			        		<h5>Descrição do Material</h5>
 							<form class = "form-group mt-2" action="agendarCliente.php" method="post">
 								<div class="form-group">
-									<label for="cpf">CPF:</label>
+									<label for="cpf">N° do Produto:</label>
 									<input type="text" class="form-control" id="cpf" placeholder="" name = "cpf">
 								</div>
 								<div class="form-group">
-									<label for="nome">Nome:</label>
+									<label for="nome">Nome do Produto:</label>
 									<input type="text" class="form-control" id="nome" placeholder="" name = "nome">
 								</div>
 								<div class="form-group">
-									<label for="nome"></label>
+									<label for="nome">Categoria:</label>
 									<input type="text" class="form-control" id="nome" placeholder="" name = "nome">
 								</div>
-							
+							<div class="form-group">
+									<label for="nome">Quantidade:</label>
+									<input type="text" class="form-control" id="nome" placeholder="" name = "nome">
+								</div>
+                                <div class="form-group">
+									<label for="nome">Fornecedor:</label>
+									<input type="text" class="form-control" id="nome" placeholder="" name = "nome">
+								</div>
+                                <div class="form-group">
+									<label for="nome">Vencimento:</label>
+									<input type="text" class="form-control" id="nome" placeholder="" name = "nome">
+								</div>
+                                <div class="form-group">
+									<label for="nome">Complemento:</label>
+									<input type="text" class="form-control" id="nome" placeholder="" name = "nome">
+								</div>
 								<input type="submit" class="btn btn-primary float-right" value = "Cadastrar">
 							</form>
 			      		</div>
@@ -83,8 +99,8 @@
   </tbody>
 </table>		
         
-        <ul class="list-group">
-  <li class="list-group-item active">Cras justo odio</li>
+        <ul class="list-group"><t3>Material</t3>
+  <li class="list-group-item active"></li>
   <li class="list-group-item">Dapibus ac facilisis in</li>
   <li class="list-group-item">Morbi leo risus</li>
   <li class="list-group-item">Porta ac consectetur ac</li>
