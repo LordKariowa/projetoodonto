@@ -26,7 +26,7 @@
 							</button>
 						</div>
 			      		<div class="modal-body">
-			        		<h5>Descrição do Material</h5>
+			        		<h5 class="front-left">Descrição do Material</h5>
 							<form class = "form-group mt-2" action="agendarCliente.php" method="post">
 								<div class="form-group">
 									<label for="cpf">N° do Produto:</label>
@@ -65,26 +65,26 @@
 				</div>
 			</div>
 			
-<div class="container">
+<div class="container-fluid">
  <div class= "row">
 
 <div class = "col-4">
-  <ul class="list-group"><t3>Material</t3>
-  <li class="list-group-item active"></li>
-  <li class="list-group-item">Gaze</li>
-  <li class="list-group-item">Touca</li>
-  <li class="list-group-item">Mascara</li>
-  <li class="list-group-item">Algodão</li> 
-  <li class="list-group-item">Álcool 70</li> 
-  <li class="list-group-item">Água Destilada</li>
-  <li class="list-group-item">Pró-pe</li>
-  <li class="list-group-item">Babador</li>
-  <li class="list-group-item">Agulha</li>
-  <li class="list-group-item">Fio de Sultura</li>
-  <li class="list-group-item">Luva</li>
-  <li class="list-group-item">>Luva P</li>
-  <li class="list-group-item">>Luva M</li>
-  <li class="list-group-item">>Luva G</li>
+  <ul class="list-group">
+    <br>
+      <li class="list-group-item">Material</li>
+      <li class="list-group-item">Gaze</li>
+      <li class="list-group-item">Touca</li>
+      <li class="list-group-item">Mascara</li>
+      <li class="list-group-item">Algodão</li> 
+      <li class="list-group-item">Álcool 70</li> 
+      <li class="list-group-item">Água Destilada</li>
+      <li class="list-group-item">Pró-PE</li>
+      <li class="list-group-item">Babador</li>
+      <li class="list-group-item">Agulha</li>
+      <li class="list-group-item">Fio de Sultura</li>
+      <li class="list-group-item">Luva P</li>
+      <li class="list-group-item">Luva M</li>
+      <li class="list-group-item">Luva G</li>
   </ul>
 </div>
 		
