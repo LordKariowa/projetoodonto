@@ -1,5 +1,5 @@
 
-	<header class="bg-white border border-dark pb-2 mb-4">
+	<header id = "header" class="bg-light border border-dark pb-2 mb-4">
 		<div id="menu"class="d-flex justify-content-between">
 			<div class="d-inline-flex bd-highlight">
 				<div>
@@ -33,10 +33,11 @@
 			</button>
 
 			<div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+
 				<ul class="d-flex flex-column nav-item">
-					<a href="home.php"><div class="d-flex justify-content-center"><i id = "home" class="fa fa-home fa-3x" aria-hidden="true"></i></div>
+					<a class = "text-black" href="home.php"><div class="d-flex justify-content-center"> <i id = "home" class="fa fa-home fa-3x" aria-hidden="true"></i></div>
 					<div class="d-flex justify-content-center text-dark">
-						<b>Home</b>
+						<b>Início</b>
 					</div></a>
 				</ul>
 
@@ -62,7 +63,7 @@
 				</ul>
 
 				<ul class="d-flex flex-column nav-item">
-					<a href="estoque.php"><div class="d-flex justify-content-center"> <i id = "estoque"class="fa fa-stack-overflow fa-3x" aria-hidden="true"></i></div>
+					<a href="estoque.php ?>"><div class="d-flex justify-content-center"><i id = "estoque"class="fa fa-stack-overflow fa-3x" aria-hidden="true"></i></div>
 					<div class="d-flex justify-content-center text-dark">
 						<b>Estoque</b>
 					</div></a>
