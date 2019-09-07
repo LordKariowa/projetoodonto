@@ -1,5 +1,5 @@
 
-	<header id = "header" class="bg-light border border-dark pb-2 mb-4">
+	<header class="bg-white border border-dark pb-2 mb-4">
 		<div id="menu"class="d-flex justify-content-between">
 			<div class="d-inline-flex bd-highlight">
 				<div>
@@ -20,8 +20,9 @@
 
 			<div class="d-inline-flex bd-highlight mt-3 mr-2">
 				<div>
-					<p>XXXXXXXXXXXXXX,</p>
-					<p>Developer</p>
+					<h5>Seja Bem-vindo(a),</h5>
+					<h5>Ser desconhecido(a)</h5>
+
 					<a href="login.php"><button type="button" class="btn btn-dark float-right">Sair</button></a>
 				</div>
 			</div>
