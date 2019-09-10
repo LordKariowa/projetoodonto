@@ -20,8 +20,8 @@
 
 			<div class="d-inline-flex bd-highlight mt-3 mr-2">
 				<div>
-					<h5>Seja Bem-vindo(a),</h5>
-					<h5>Ser desconhecido(a)</h5>
+					<h5>Seja Bem-vindo (a),</h5>
+					<h5>xxxx</h5>
 
 					<a href="login.php"><button type="button" class="btn btn-dark float-right">Sair</button></a>
 				</div>
@@ -57,7 +57,7 @@
 				</ul>
 
 				<ul class="d-flex flex-column nav-item">
-					<a href=""><div class="d-flex justify-content-center"> <i id = "ficha"class="fa fa-file-text-o fa-3x" aria-hidden="true"></i></div>
+					<a href="ficha.php"><div class="d-flex justify-content-center"> <i id = "ficha"class="fa fa-file-text-o fa-3x" aria-hidden="true"></i></div>
 					<div class="d-flex justify-content-center text-dark">
 						<b>Ficha</b>
 					</div></a>

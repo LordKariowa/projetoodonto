@@ -5,7 +5,6 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="https://kit.fontawesome.com/7b04e73c30.js"></script>
 		<link rel="stylesheet" type="text/css" href="styleHeader.css">
         <script>
             function excluir(id){
@@ -40,11 +39,7 @@
 
                         $result = mysqli_query($con, $sql);
 
-                        $totalRegistros = mysqli_num_rows ($result);
-                        
-                        
-                        
-                        
+                        $totalRegistros = mysqli_num_rows ($result);    
                     }           
                 ?>
                 <button type="button" class="btn btn-primary btn-md ml-2" data-toggle="modal" data-target="#modal1">Cadastrar Paciente</button>
@@ -112,7 +107,7 @@
 
                                     <div class="form-group">
                                         <label for="complemento">Complemento:</label>
-                                        <input type="text" class="form-control" id="complemento" placeholder="" name = "complemento">
+                                        <input type="text" class="form-control" id="complemento" placeholder="" Digite seuname = "complemento">
                                     </div>
 
 
@@ -125,12 +120,6 @@
                                         <label for="nascimento">Data de Nascimento:</label>
                                         <input type="date" class="form-control" id="nascimento" placeholder="" name = "nascimento">
                                     </div>	
-
-                                    <div class="form-group">
-                                        <label for="inicio_tratamento">Inicio do Tratamento:</label>
-                                        <input type="date" class="form-control" id="inicio_tratamento" placeholder="" name = "inicio_tratamento">
-                                    </div>	
-
                                     <div class="form-group">
                                         <label for="cidade">Cidade:</label>
                                         <input type="text" class="form-control" id="cidade" placeholder="" name = "cidade">
@@ -195,7 +184,7 @@
                     </div>
                 </div>
             </span>
-            <div class = "overflow-auto ml-1 mr-1" style = "max-height: 450px">
+            <div class = "overflow-auto ml-1 mr-1" style = "max-height: 550px">
                 <table class="table border table-striped">
                     <thead id = "theadCadastro" class = "thead-dark">
                         <tr>
@@ -235,7 +224,6 @@
                                 $complemento = $array['complemento'];
                                 $bairro = $array['bairro'];
                                 $nascimento = $array['nascimento'];
-                                $inicio_tratamento = $array['inicio_tratamento'];
                                 $cidade = $array['cidade'];
                                 $uf= $array['uf'];
                                 $situacaoficha = $array['situacaoficha'];
@@ -250,9 +238,6 @@
                                 //Ajuste da formatação da data DD/MM/AAAA
                                 $dtNasci = explode('-', $nascimento);
                                 $datadeNascimento = $dtNasci[2] . "-" . $dtNasci[1]. "-" . $dtNasci[0];
-
-                                $dtIniTrata = explode('-', $inicio_tratamento);
-                                $inicio_tratamento = $dtIniTrata[2] . "-" . $dtIniTrata[1]. "-" . $dtIniTrata[0];
 
 
                         ?>
