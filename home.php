@@ -58,11 +58,11 @@
 							</div>
 						</div>
 
-						<div class = "col-md-7 ml-2 w-50">
+						<div class = "col-md-7 ml-2">
 							<span  class = "d-inline-flex">
 								<i class="fa fa-calendar mr-2" aria-hidden="true"></i>
 							</span>
-							<span class = "d-inline-flex w-50">
+							<span class = "d-inline-flex">
 								<input class = "form-control" type="date" name="data" style = "width: 85%">
 							</span>
 							<p class="text-center mt-2">
@@ -175,10 +175,10 @@
 				 	</tbody>
 				</table>
 				<span>
-					<input class = "text-center" type = "text" value = "N Pacientes" disabled>
+					<input class = "text-center" type = "text" placeholder = "N Pacientes" disabled>
 				</span>
 				<span>
-					<a href= "#"><input class = "btn btn-primary float-right" type = "submit" value = "Visualizar Agenda"></a>
+					<input class = "btn btn-primary float-right" type = "submit" value = "Visualizar Agenda">
 				</span>
 			</div>
 			<div class = "col"></div>
@@ -199,31 +199,31 @@
 				  	<tbody id = "tbodyAni">
 				    	<tr>
 				      		<td>Leandro Cerqueira</td>
-				      		<td>16-10</td>
+				      		<td>N Anos</td>
 				    	</tr>
 				    	<tr>
 				      		<td>Matheus Ribeiro</td>
-				    		<td>15-08</td>
+				    		<td>N Anos</td>
 				    	</tr>
 				    	<tr>
 				      		<td>Marcus Vinicius</td>
-				    		<td>22-09</td>
+				    		<td>N Anos</td>
 				    	</tr>
 				    	<tr>
 				      		<td>Paulo Victor</td>
-				    		<td>01-02</td>
+				    		<td>N Anos</td>
 				    	</tr>
 				    	<tr>
 				      		<td>XXX.XXX</td>
-				    		<td>02-08</td>
+				    		<td>N Anos</td>
 				    	</tr>
 				    	<tr>
 				      		<td>Leandro Cerqueira</td>
-				      		<td>05-10</td>
+				      		<td>N Anos</td>
 				    	</tr>
 				    	<tr>
 				      		<td>Marcus Vinicius</td>
-				    		<td>06-09</td>
+				    		<td>N Anos</td>
 				    	</tr>
 				 	</tbody>
 				</table>

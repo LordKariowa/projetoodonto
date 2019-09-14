@@ -1,4 +1,3 @@
-
 <?php
 
 	include_once 'conexao.php';
@@ -7,6 +6,7 @@
 	$sql =  "DELETE FROM estoque where id_estoque = $id";
 
 	$deletar = mysqli_query($con, $sql);
+
 ?>
 
 <!DOCTYPE html>
