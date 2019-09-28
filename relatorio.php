@@ -123,9 +123,6 @@
       </div>
     </div>
 
-
-
-
     <container><h6>Período</h6>
     <div class="form-group">
         <label for="De">De</label>
@@ -137,6 +134,9 @@
         <input type="date" class="form-control w-25" id="Até" placeholder="" name = "Até">
     </div>	
     </container>
+    
+            <button type="button" class="btn btn-danger">Gerar Relatótrio</button>
+
 
     <table class="table">
       <thead class="thead-dark">

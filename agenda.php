@@ -29,7 +29,14 @@
   crossorigin="anonymous"></script>
   
 
-
+<div class="input-group-text">
+      <input type="radio" aria-label="Radio button for following text input">
+      <label>Dr.Cristiani</label><br>
+    </div>
+    <div class="input-group-text">
+      <input type="radio" aria-label="Radio button for following text input">
+       <label>Dr.Adriani</label>
+    </div>
 <div class="container theme-showcase">
   <h1>Calendario</h1>
 <div id="holder" class="row" ></div>
