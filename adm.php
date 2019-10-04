@@ -37,8 +37,8 @@
       <div class = "d-flex justify-content-around">
         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal1">Cadastro de Usuário</button>
       
-<!--Botão modal cadastro de atendimentos-->
-       <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal2">Cadastro de Atendimentos</button>
+<!--Botão modal cadastro tipo consulta-->
+       <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal2">Cadastro Tipo Consulta</button>
 
    <!--Botão modal cadastro de procedimentos-->  
 
@@ -153,35 +153,24 @@
       </table>
       </div>
 
-      <!--Modal  Tela de Cadastro-- TIPO DE ATENDIMENTO-->  
+      <!--Modal  Tela de Cadastro Tipo da Consulta-->  
     <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true"> 
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title text-primary ml-5" id="modalTitle">Cadastro de Atendimentos</h3>
+                    <h3 class="modal-title text-primary ml-5" id="modalTitle">Cadastro Tipo de Consulta</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body2">
-                  <h5 class = "ml-4">Dados Pessoais:</h5>
-                    <form class = "form-group mt-2 ml-4 mr-4" action="admCadAtendimento.php" method="post">
+                  <h5 class = "ml-4">Nome da Consulta</h5>
+                    <form class = "form-group mt-2 ml-4 mr-4" action="tipoconsulta.php  ?>" method="post">
                         <div class="form-group">
-                          <label for="nome">Nome:</label>
-                          <input type="text" class="form-control" id="nome" placeholder="" name = "nome">
+                          <label for="nomeconsulta">Nome:</label>
+                          <input type="text" class="form-control" id="nomeconsulta" placeholder="" name = "nomeconsulta">
                         </div>
-                        <div class="form-group">
-                          <label for="data1">Data:</label>
-                          <input type="date" class="form-control" id="data1" placeholder="" name = "data">
-                        </div>                
-                        <div class="form-group">
-                          <label for="observacao">Descrição:</label>
-                          <input type="text" class="form-control" id="descricao" placeholder="" name = "descricao">
-                        </div> 
-                        <div class="form-group">
-                          <label for="observacao">Dentista:</label>
-                          <input type="text" class="form-control" id="dentista" placeholder="" name = "descricao">
-                        </div>
+                        
                         <input type="submit" class="btn btn-primary float-right" value = "Cadastrar">
                     </form>
                 </div>
@@ -190,31 +179,28 @@
             </div>
         </div>
     </div>
-  
+  <!-- Tabela de cadastro Tipo da Consulta -->
       <div class = "col-md-4 overflow-auto ml-1 mr-1" style = "max-width:550px">
         <table class="table border table-striped">
           <thead id = "theadCadastro" class = "bg-light">
             <tr>
-              <th scope="col">Nome</th>                    
-              <th scope="col">Data</th>
-              <th scope="col">Descrição</th>
+              <th scope="col">Nome da Consulta</th>                    
+              
               <th></th>  
             </tr>
           </thead>
           <tbody id = "tbodyCadastro">
           <?php
             include_once 'conexao.php';
-            $sql = "SELECT * FROM atendimento";
+            $sql = "SELECT * FROM tipoconsulta";
             $busca = mysqli_query($con, $sql);
             while($array = mysqli_fetch_array($busca)){             
-            $nome = $array['nome']; 
-            $data = $array['data'];
-            $descricao = $array['descricao'];
+            $nomeconsulta = $array['nomeconsulta']; 
+           
           ?>
             <tr>
-              <td><?php echo $nome?></td>                
-              <td><?php echo $data?></td>
-              <td><?php echo $descricao?></td>                        
+              <td><?php echo $nomeconsulta?></td>                
+                                 
               <td>
                 <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarAtendimento.php?id=<?php echo $array['id_atendimento'] ?>" role="button"><i class="fa fa-pencil-square-o"></i></a> 
                 <a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirAtendimento(<?php echo $array['id_atendimento']?>)" role="button"><i class="fa fa-trash-o"></i></a>

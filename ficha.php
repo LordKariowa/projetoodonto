@@ -40,6 +40,14 @@
                             <div class="modal-body">
                                 <form>
                                     <div class="form-row">
+
+                                        -------------Botão Buscar Pessoa-----
+
+                        <input class="form-control mr-2 ml-1" type="search" name = "nome">
+                        <button class="btn btn-primary btn-md mr-3" type="submit">Pesquisar</button>
+
+                                        -------------Fim Botão Buscar Pessoa
+
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Nome:</label>
                                             <input type="text" class="form-control" id="inputEmail4" placeholder="Nome">

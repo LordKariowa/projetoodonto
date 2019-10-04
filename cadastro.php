@@ -202,11 +202,11 @@
                             <th scope="col">CPF</th>
                             <th scope="col">RG</th>						
                             <th scope="col">Nome</th>
-                            <th scope="col">Orçamento</th>
+                            <!--<th scope="col">Orçamento</th>
                             <th scope="col">Telefone</th>
                             <th scope="col">Celular</th>	
                             <th scope="col">Ficha</th>	
-                            <th scope="col">Data de Nasci.</th>
+                            <th scope="col">Data de Nasci.</th> -->
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -219,27 +219,39 @@
                                 $cpf = $array['cpf'];
                                 $rg = $array['rg'];
                                 $nome = $array['nome'];
-                                $orcamento = $array['orcamento'];
-                                $telefone = $array['telefone'];
-                                $celular = $array['celular'];
-                                $situacaoficha = $array['situacaoficha'];
+                                //$orcamento = $array['orcamento'];
+                                //$telefone = $array['telefone'];
+                               // $celular = $array['celular'];
+                                //$situacaoficha = $array['situacaoficha'];
                                 
-                                $nascimento = $array['nascimento'];
-                                $dtNasci = explode('-', $nascimento);
-                                $datadeNascimento = $dtNasci[2] . "-" . $dtNasci[1]. "-" . $dtNasci[0];
+                               // $nascimento = $array['nascimento'];
+                                //$dtNasci = explode('-', $nascimento);
+                                //$datadeNascimento = $dtNasci[2] . "-" . $dtNasci[1]. "-" . $dtNasci[0];
                         ?>
                             <tr>
                                 <td><?php echo $cpf?></td>
                                 <td><?php echo $rg?></td>
                                 <td><?php echo $nome?></td>
-                                <td><?php echo $orcamento?></td>
+                                <!--<td><?php echo $orcamento?></td>
                                 <td><?php echo $telefone?></td>
                                 <td><?php echo $celular?></td>
                                 <td><?php echo $situacaoficha?></td>
-                                <td><?php echo $datadeNascimento?></td> 
+                                <td><?php echo $datadeNascimento?></td> -->
                                 <td>
-                                    <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarCadastro.php?id=<?php echo $idPessoa?>" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> 
-                                    <a class="btn btn-danger btn-sm"  style="color:#fff" href="#" onclick = "excluir(<?php echo $array['id_pessoa']?>)" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+                                    <a class="btn btn-success btn-sm" href="consulta.php" role="button">CONSULTAS</a>
+
+                                    
+
+                                    <a class="btn btn-primary btn-sm"  style="color:#fff" href="#" onclick = "excluir(<?php echo $array['id_pessoa']?>)" role="button"><i aria-hidden="true"></i>VER FICHA</a>
+
+                                    <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarCadastro.php?id=<?php echo $idPessoa?>" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true">EDITAR</i></a> 
+
+                                    <a class="btn btn-danger btn-sm"  style="color:#fff" href="#" onclick = "excluir(<?php echo $array['id_pessoa']?>)" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i>EXCLUIR</a>
+
+                                    <!--<a class="btn btn-success btn-sm"  style="color:#fff" href="consulta.php (<?php echo $array['id_atendimento']?>)" role="button"><i  aria-hidden="true">CONSULTAS</i></a>-->
+
+                                    
                                 </td>
                             </tr>
                         <?php
