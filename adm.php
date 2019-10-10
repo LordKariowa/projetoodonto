@@ -44,6 +44,11 @@
 
         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal3">Cadastro de Procedimentos</button>
       </div>
+
+
+        <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal4">Cadastro do Dentista</button>
+      </div>
+
     <span class = "d-flex d-inline-flex mb-2">
            <?php
           
@@ -210,6 +215,74 @@
           </tbody>
         </table>
       </div>
+
+      <!-- INICIO Modal Cadastro Dentista-->
+
+<div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true"> 
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title text-primary ml-5" id="modalTitle">Cadastro de Dentistas</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body2">
+                <h5 class = "ml-4">Nome do Dentista</h5>
+              <form class = "form-group mt-2 ml-4 mr-4" action="admCadDentista.php" method="post">
+                <div class="form-group">
+                  <label for="nomedentista">Nome:</label>
+                  <input type="text" class="form-control" id="nomedentista" placeholder="" name = "nomedentista">
+                </div>
+                <div class="form-group">
+                  <label for="crodentista">CRO:</label>
+                  <input type="text" class="form-control" id="cro" placeholder="" name = "cro">
+                </div>                           
+                <input type="submit" class="btn btn-primary float-right" value = "Cadastrar">
+              </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Tabela de cad Dentista -->
+      <div class = "col-md-4 overflow-auto ml-1 mr-1" style = "max-width:550px">
+        <table class="table border table-striped">
+          <thead id = "theadCadastro" class = "bg-light">
+            <tr>
+              <th scope="col">Nome Dentista</th>
+              <th></th>                   
+            </tr>
+          </thead>
+          <tbody id = "tbodyCadastro">
+            <?php
+              include_once 'conexao.php';
+              $sql = "SELECT * FROM dentista";
+              $busca = mysqli_query($con, $sql);
+              while($array = mysqli_fetch_array($busca)){                       
+              $nomedentista = $array['nomedentista'];
+              $cro = $array['cro'];  
+            ?>
+            <tr>
+              <td><?php echo $nomedentista?></td>
+              <td><?php echo $cro?></td>                
+              <td>
+                <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarProcedimento.php?id=<?php echo $array['id_procedimento']?>" role="button"><i class="fa fa-pencil-square-o"></i></a> 
+                <a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirProcedimento(<?php echo $array['id_procedimento']?>)" role="button"><i class="fa fa-trash-o"></i></a>
+              </td>
+            </tr>   
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+      <!-- FIM Modal Cadastro Dentista-->
+
+
       <!--Modal Procedimentos--> 
       <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true"> 
         <div class="modal-dialog modal-dialog-centered" role="document">

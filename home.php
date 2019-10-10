@@ -11,6 +11,7 @@
 	<body>
 		
 		<?php include 'header.php'?>
+
 		<!-- SESSÃO DO SISTEMA WEB -->
 		
 		<!--Área de verificação de Consultas-->
@@ -56,6 +57,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class = "col-md-7 ml-2 w-50">
 							<span  class = "d-inline-flex">
 								<i class="fa fa-calendar mr-2" aria-hidden="true"></i>
@@ -81,6 +83,7 @@
 									<div class="progress-bar bg-primary" style="width: 75%"></div>
 								</div>
 							</div>
+
 							<div class="progress-group">
 								<b>Confirmado</b>
 								<span class="float-right"><b>60</b>/100</span>
@@ -88,6 +91,7 @@
 									<div class="progress-bar bg-warning" style="width: 60%"></div>
 								</div>
 							</div>
+
 							<div class="progress-group">
 								<b>Cancelado</b>
 								<span class="float-right"><b>50</b>/100</span>
@@ -99,7 +103,9 @@
 					</div>				
 				</div>
 			</div>
+
 		<!-- Área de visualização de próximos pacientes -->
+
 		    <div class = "col-lg-5 mt-4">
 		    	<table id = "tableProxi" class = "table border table-hover">
 					<thead id = "theadProxi" class = "bg-light">
@@ -177,16 +183,20 @@
 			</div>
 			<div class = "col"></div>
 		</div>
+
 		<!-- Visualização de Aniversariantes do mês -->
+
 		<div class="row">
 			<div class = "col"></div>
 			<div class = "col-lg-3 mt-5">
+
 				<table id = "tableAni" class = "table border table-hover w-100 h-50">
 					<thead id = "theadAni">
 						<tr  class = "bg-light">
 							<th  class = "text-center" colspan="2"><i class="fa fa-birthday-cake mr-2" aria-hidden="true"></i>Aniversariantes do Mês</th>
 						</tr>
 					</thead>
+
 					<thead id = "theadProce2">
 				    	<tr>
 				      		<th class = "text-center">Nome</th>
@@ -194,6 +204,7 @@
 				    		<th>Contato</th>
 				  		</tr>
 				  	</thead>
+
 				  	<tbody id = "tbodyAni">
 				    	<tr>
 				      		<td>Leandro Cerqueira</td>
@@ -232,7 +243,9 @@
 				 	</tbody>
 				</table>
 			</div>
+
 		<!-- Visualização de consolidado Financeiro -->
+
 			<div class="col-lg-4 mt-5">
 		    	<table class=" table border w-100">
 		    		<thead>
@@ -262,7 +275,9 @@
 				  </tbody>
 				</table>
 			</div>
+
 		<!-- Visualização dos procedimentos realizados -->
+
 			<div class=" col-lg-3 mt-5">
 		    	<table id = "tableProce" class="table table-hover border w-100 h-50">
 					<thead id = "theadProce">
@@ -277,6 +292,7 @@
 				    		<th>Dentista</th>
 				  		</tr>
 				  	</thead>
+
 				  <tbody id = "tbodyProce">
 				    <tr>
 				      	<td class = "text-center">Clínica Geral</td>
