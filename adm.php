@@ -45,7 +45,7 @@
         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal3">Cadastro de Procedimentos</button>
       </div>
 
-       <div>
+
         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal4">Cadastro do Dentista</button>
       </div>
 
