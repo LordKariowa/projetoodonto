@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Relatório</title>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="styleHome.css">
-		<link rel="stylesheet" type="text/css" href="styleHeader.css">
+  <head>
+    <title>Relatório</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styleHome.css">
+    <link rel="stylesheet" type="text/css" href="styleHeader.css">
   </head>
-  <body>		
-    			<?php include 'header.php'?>
-    <div class = "d-flex center-content-end mr-2">
+  <body>    
+          <?php include 'header.php'?>
+    <div class = "d-flex justify-content-end">
       <h5 class = "ml-4">*Marque as opções, depois clique em gerar relatório</h5>
     </div>
-
     
 <div class="container">
       <!-- Módulos -->
-      <h4>Módulo</h4>
+      <h4>Módulo:</h4>
       <div class="row">
           <div class="col-3">
               <div class="form-check">
@@ -44,11 +43,10 @@
               </div>
           </div>
       </div>
-
   
   <!-- Contexto -->
    
-   <h4 class="mt-4">Contexto</h4>
+   <h4 class="mt-4">Contexto:</h4>
    
    <div class="row">
        <div class="col-4">
@@ -114,9 +112,8 @@
        </div>
    </div>
    
-
   <!-- Ações -->
-   <h4 class="mt-4">Ações</h4>
+   <h4 class="mt-4">Ações:</h4>
    <div class="row">
        <div class="col-3">
           <div class="form-check">
@@ -144,25 +141,23 @@
        </div>
    </div>
    
-
-   <h4 class="mt-4">Período</h4>
+   <h4 class="mt-4">Período:</h4>
    <div class="row">
-       <div class="col-4">
+       <div class="col-md-4">
            <div class="form-group">
                 <label for="De">De</label>
                 <input type="date" class="form-control w-100" id="De" placeholder="" name = "De">
-            </div>	
+            </div>  
        </div>
-       <div class="col-4">
+       <div class="col-md-4">
             <div class="form-group">
                 <label for="Até">Até</label>
                 <input type="date" class="form-control w-100" id="Até" placeholder="" name = "Até">
             </div>
             
        </div>
-       <div class="col-4"><button type="button" class="btn btn-dark">Imprimir</button></div>
+       <div class="col-md-4"><button type="button" class="btn btn-dark">Gerar Relatório</button>
    </div>
-   
     <table class="table table-hover">
       <thead class="thead-dark">
         <tr>
@@ -189,7 +184,6 @@
         </tr>
       </tbody>
     </table>
-    
     </div>
   </body>
 </html>
