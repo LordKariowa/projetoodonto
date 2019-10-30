@@ -113,7 +113,7 @@
                                         <input type="text" class="form-control" id="Complemento" placeholder="" name = "complemento">
                                     </div>
                                     <div class="form-group">
-                                        <label>Situação da ficha:</label>
+                                        <label>Situação da Ficha:</label>
                                         <select name="situacaoficha" class="form-control">
                                             <option value="" disabled selected>- Escolha -</option>
                                             <option value="ativa">Ativa</option>
@@ -202,13 +202,11 @@
                 <table class="table border table-striped">
                     <thead id = "theadCadastro" class = "thead-dark">
                         <tr>
-                            <th scope="col">CPF</th>
-                            <th scope="col">RG</th>						
                             <th scope="col">Nome</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Celular</th>	
-                            <!--<th scope="col">Ficha</th>	
-                            <th scope="col">Data de Nasci.</th> -->
+                            <th scope="col">Data de Nascimento</th>
+                            <th scope="col">Celular</th>
+                            <th scope="col">E-mail</th>
+                            
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -216,20 +214,26 @@
                     <tbody id = "tbodyCadastro">
                         <?php
                             while($array = mysqli_fetch_array($buscar)){
-                                $idPessoa = $array['paciente_id'];
+                                $id = $array['id'];
+
+
                                 //$situacaoficha = $array['situacaoficha'];
                                 //$nascimento = $array['nascimento'];
                                 //$dtNasci = explode('-', $nascimento);
                                 //$datadeNascimento = $dtNasci[2] . "-" . $dtNasci[1]. "-" . $dtNasci[0];
                             ?>
-                            <tr>
+                            <tr><td><?php echo $array['nome']?></td>
+                                <td><?php echo $array['nascimento']?></td>
+                                <td><?php echo $array['celular']?></td>                                
+                                <td><?php echo $array['email']?></td>
+
+                                <!--<td><?php echo $array['nome']?></td>
                                 <td><?php echo $array['cpf']?></td>
-                                <td><?php echo $array['rg']?></td>
-                                <td><?php echo $array['nome']?></td>
-                                <!--<td><?php echo $orcamento?></td>-->
+                                <td><?php echo $array['rg']?></td>                               
+                                <td><?php echo $orcamento?></td>
                                 <td><?php echo $array['telefone']?></td>
                                 <td><?php echo $array['celular']?></td>
-                                <!--<td><?php echo $situacaoficha?></td>
+                                <td><?php echo $situacaoficha?></td>
                                 <td><?php echo $datadeNascimento?></td> -->
                                 <td class = "d-flex justify-content-around">
 
@@ -237,11 +241,11 @@
                                         <i class="fa fa-address-book-o mr-2" aria-hidden="true"></i>
                                         Visualizar Ficha
                                     </a>
-                                    <a style = "font-size:15px" class="btn btn-warning btn-sm text-white"  style="color:#fff" href="editarCadastro.php?id=<?php echo $idPessoa?>" role="button">
+                                    <a style = "font-size:15px" class="btn btn-warning btn-sm text-white"  style="color:#fff" href="editarCadastro.php?id=<?php echo $id?>" role="button">
                                         <i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>
                                         Editar
                                     </a> 
-                                    <a style = "font-size:15px" class="btn btn-danger btn-sm"  style="color:#fff" href="#" onclick = "excluir(<?php echo $array['paciente_id']?>)" role="button">
+                                    <a style = "font-size:15px" class="btn btn-danger btn-sm"  style="color:#fff" href="#" onclick = "excluir(<?php echo $array['id']?>)" role="button">
                                         <i class="fa fa-trash-o mr-2" aria-hidden="true"></i>
                                         Excluir
                                     </a>

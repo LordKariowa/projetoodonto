@@ -16,7 +16,7 @@
     
 <div class="container">
       <!-- Módulos -->
-      <h4>Módulo:</h4>
+      <h4>Módulo</h4>
       <div class="row">
           <div class="col-3">
               <div class="form-check">
@@ -46,7 +46,7 @@
   
   <!-- Contexto -->
    
-   <h4 class="mt-4">Contexto:</h4>
+   <h4 class="mt-4">Contexto</h4>
    
    <div class="row">
        <div class="col-4">
@@ -113,7 +113,7 @@
    </div>
    
   <!-- Ações -->
-   <h4 class="mt-4">Ações:</h4>
+   <h4 class="mt-4">Ações</h4>
    <div class="row">
        <div class="col-3">
           <div class="form-check">
@@ -141,7 +141,7 @@
        </div>
    </div>
    
-   <h4 class="mt-4">Período:</h4>
+   <h4 class="mt-4">Período</h4>
    <div class="row">
        <div class="col-md-4">
            <div class="form-group">

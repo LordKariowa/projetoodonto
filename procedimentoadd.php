@@ -1,13 +1,20 @@
 <?php
 
 	include_once 'conexao.php';
+    //$id                     = $_POST['id'];
+    $atendimento_id         = $_POST['atendimento_id'];
+    $procedimento_tipo_id   = $_POST['procedimento_tipo_id'];
+	$valor                  = $_POST['valor'];
+    $obs                    = $_POST['obs'];
+	
+    $sql = "INSERT INTO procedimento VALUES(null,'{$atendimento_id}','{$procedimento_tipo_id}', '{$valor}', '{$obs}')"; 
 
-	$id = $_GET['id'];
-	$atendimento_id = $_GET['atendimento_id'];
+	// $inserir = mysqli_query($con, $sql);
 
-	$sql =  "DELETE FROM procedimento where id = $id";
+	$msg = (mysqli_query($con, $sql)) ? "Gravado com sucesso" : "Erro ao gravar";
 
-	$deletar = mysqli_query($con, $sql);
+    //header("location:msgProcedimento.php?msg=".$msg);
+    
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +32,7 @@
 			<center>
 			    <h3>Deletado com Sucesso!</h3>
 			    <div style="margin-top: 10px">
-			    <a href="procedimento.php?atendimento_id=<?php echo $atendimento_id ?>" class="btn btn-sm btn-success" style="color:#fff">Voltar</a>
+                <a href="procedimento.php?atendimento_id=<?php echo $atendimento_id ?>" class="btn btn-sm btn-success" style="color:#fff">Voltar</a>
 			    </div>    
 			</center>
 		</div>

@@ -1,7 +1,7 @@
 <?php
     include 'conexao.php';
     
-    $id = $_GET["id_atend"];
+    $id = $_GET["id"];
 
 ?>
 <!DOCTYPE html>

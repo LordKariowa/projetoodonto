@@ -17,6 +17,21 @@
 <body>
 	<?php include 'header.php'?>
     <h1 class = "text-center mb-4">Agendamento de Pacientes</h1>
+
+    <div class="container">
+        <?php $msg = $_GET["msg"];
+             if($msg == "Gravado com sucesso"){  ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $msg;?>
+                </div>
+        <?php } else {?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $msg;?>
+                </div>
+        <?php };?>
+        <!--<a href="agenda.php">Voltar</a>-->
+    </div>
+</body>
         	<div class = "pl-5 pr-5">
                 <span class = "d-flex d-inline-flex mb-2">
                         <form class="form-inline">
@@ -45,39 +60,45 @@
                                     <form class = "form-group mt-2" action="cadastrarAgenda.php" method="post"> 
                                        <div class="form-group">
                                             <label for="nome">Paciente:</label>
-                                            <select type="text" class="form-control" id="nome" placeholder="" name = "nome">
+                                            <select type="text" class="form-control" id="nome" placeholder="" name="paciente_id">
                                             <?php
                                                 include_once 'conexao.php';
-                                                $sql = "SELECT * FROM paciente";
+                                                $sql = "SELECT * FROM paciente ORDER BY nome ASC";
                                                 $busca = mysqli_query($con, $sql);
 
                                                 while($array = mysqli_fetch_array($busca)){
-                                                    $nome = $array['nome'];
+                                                    $id     = $array['id'];
+                                                    $nome   = $array['nome'];
                                                     ?>
-                                                   <option><?php echo $nome ?></option> 
+                                                   <option value='<?php echo $id ?>'><?php echo $nome ?></option> 
                                             <?php } ?>
                                             </select>
                                         </div> 
                                      <!-- AQUI É A LISTA DE SELEÇÃO DA consultas-->
+                                       <!--
                                         <div class="form-group">
                                             <label>Tipo da Consulta:</label>
-                                            <select class="form-control" name="nomeconsulta" id="nomeconsulta" placeholder="" name="nomeconsulta">
+                                            <select class="form-control" name="tipo_de_atendimento" id="atendimentonome" placeholder="" name="atendimentonome">
                                                 <?php
+                                                    /*
                                                    include_once 'conexao.php';
 
-                                                    $sql = "SELECT * FROM tipoconsulta";
+                                                    $sql = "SELECT * FROM atendimento_tipo";
                                                     $busca = mysqli_query($con, $sql);
                                                     while($array = mysqli_fetch_array($busca)){                                    
-                                                        $nomeconsulta = $array['nomeconsulta'];
+                                                        $atendimentonome = $array['atendimentonome'];
+                                                    */
                                                 ?>
-                                                    <option><?php echo $nomeconsulta ?></option> 
-                                                <?php } ?>                          
+                                                    <!--<option><?php //echo $atendimentonome ?></option> -->
+                                                <?php //} ?>                          
+                                                <!--
                                             </select>
                                         </div>    
+                                        -->
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label for="data">Data:</label>
-                                                <input type="date" class="form-control" id="data" placeholder="dia" name="dia">
+                                                <input type="date" class="form-control" id="data" placeholder="data" name="data">
                                             </div>
                                             
                                             <div class="form-group col-md-6">
@@ -88,36 +109,25 @@
                                         <!-- AQUI É A LISTA DE SELEÇÃO DE DENTISTA-->
                                         <div class="form-group">
                                             <label>Nome Dentista:</label>
-                                            <select class="form-control" name="nomedentista" id="nomedentista" placeholder="" name="nomedentista">
+                                            <select class="form-control" name="dentista_id" id="nomedentista" placeholder="" name="nomedentista">
                                                 <?php
                                                    include_once 'conexao.php';
-                                                    $sql = "SELECT * FROM dentista";
+                                                    $sql = "SELECT * FROM dentista ORDER BY nome ASC";
                                                     $busca = mysqli_query($con, $sql);
 
-                                                    while($array = mysqli_fetch_array($busca)){
-                                                        $nomedentista = $array['nome'];
-                                                ?>
-                                                    <option><?php echo $nomedentista ?></option> 
+                                                while($array = mysqli_fetch_array($busca)){
+                                                    $id     = $array['id'];
+                                                    $nome   = $array['nome'];
+                                                    ?>
+                                                   <option value='<?php echo $id ?>'><?php echo $nome ?></option> 
                                                 <?php } ?>                          
                                             </select>
                                         </div>
 
                                         <div class="row">
-                                            <div class="form-group col-md-12">
-                                                <label>Procedimento:</label>
-                                                <select class="form-control" name="tipoproce" id="tipoproce" placeholder="">
-                                                    <?php 
-                                                        include_once 'conexao.php';
-                                                        $sql = "SELECT * FROM tipoprocedimento";
-                                                        $busca = mysqli_query($con, $sql);
-
-                                                        while($array = mysqli_fetch_array($busca)){
-                                                            $tipoproce = $array['nome_tipo_procedimento'];
-                                                    ?>
-                                                        <option><?php echo $tipoproce ?></option> 
-                                                    <?php } ?>                          
-                                                </select>
-                                            </div>
+                                         <div class="form-group col-md-12">
+                                              
+                                            </div> 
                                         </div>
                                         <div class="form-group">
                                             <label for="obs">Descrição:</label>
@@ -151,11 +161,11 @@
                     <table class="table w-100 mt-4 table-hover">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Paciente</th>
-                                <th scope="col">Tipo da Consulta</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Hora</th>                               
-                                <th scope="col">Dentista</th>                                
+                                <th scope="col">atendimento_id </th>
+                                <!--<th scope="col">atendimento_nome</th>-->
+                                <th scope="col">paciente_nome</th>                               
+                                <th scope="col">dentista_nome</th> 
+                                <th scope="col">data</th>                               
                                 <th scope = "col"></th>
                             </tr>
                         </thead>
@@ -163,29 +173,43 @@
                             <?php
 
                                 include_once 'conexao.php';
-                                $sql = "SELECT * FROM atendimento";
+                                //$sql = "SELECT * FROM atendimento";
+                                //a.data, 
+                                //a.descricao, 
+                                //a.nome AS atendimento_nome, 
+
+
+                            $sql = "SELECT 
+                                    a.id AS atendimento_id, 
+                                    p.nome AS paciente_nome, 
+                                    d.nome AS dentista_nome,
+                                    a.data
+                                    FROM atendimento a, paciente p, dentista d
+                                    WHERE 
+                                    a.paciente_id = p.id
+                                    AND
+                                    a.dentista_id = d.id";
                                 $busca = mysqli_query($con, $sql);
 
                                 while($array = mysqli_fetch_array($busca)){
-                                    $nome = $array['nome'];
-                                    $nomeconsulta = $array['nomeconsulta'];
-                                    $dia = $array['dia'];
-                                    $hora = $array['hora'];
-                                    $descricao = $array['descricao']; 
-                                    $nomedentista = $array['nomedentista'];
-                                                             
+                                    $atendimento_id = $array['atendimento_id'];
+                                    //$atendimento_nome = $array['atendimento_nome'];
+                                    $paciente_nome = $array['paciente_nome'];
+                                    $dentista_nome = $array['dentista_nome'];
+                                    $data = $array['data'];
+                                    //$hora = $array['hora'];
                                     //Ajuste da formatação da data DD/MM/AAAA
-                                    $dtConsu = explode('-', $dia);
-                                    $diaConsu = $dtConsu[2] . "-" . $dtConsu[1]. "-" . $dtConsu[0];
+                                    //$dtConsu = explode('-', $data);
+                                    //$diaConsu = $dtConsu[2] . "-" . $dtConsu[1]. "-" . $dtConsu[0];
                             ?>
                                 <tr>                                    
-                                    <td><?php echo $nome?></td>
-                                    <td><?php echo $nomeconsulta?></td>
-                                    <td><?php echo $diaConsu?></td>                                    
-                                    <td><?php echo $hora?></td>                                   
-                                    <td><?php echo $nomedentista?></td>
+                                    <td><?php echo $atendimento_id?></td>
+                                    <!--<td><?php //echo $atendimento_nome?></td>-->
+                                    <td><?php echo $paciente_nome?></td>                                   
+                                    <td><?php echo $dentista_nome?></td>
+                                    <td><?php echo $data?></td>
                                     <td class = "d-flex justify-content-around">
-                                        <a class="btn btn-success btn-sm" href="procedimento.php?id=<?php echo $array['paciente_id']?>" role="button">
+                                        <a class="btn btn-success btn-sm" href="procedimento.php?atendimento_id=<?php echo $atendimento_id ?>" role="button">
                                             <i class="fa fa-medkit mr-2" aria-hidden="true"></i>
                                             Procedimentos
                                         </a>      
@@ -194,11 +218,11 @@
                                             <i class="fa fa-eye mr-1" aria-hidden="true"></i> 
                                             Visualizar Ficha
                                         </a>           
-                                        <a class="btn btn-warning btn-sm"  style="color:#fff" href="editaragenda.php?id_atend=<?php echo $array['atendimento_id']?>" role="button">
+                                        <a class="btn btn-warning btn-sm"  style="color:#fff" href="editaragenda.php?id>" role="button">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             Editar
                                         </a>  
-                                        <a class="btn btn-danger btn-sm"  style="color:#fff" href="#" onclick="excluir(<?php echo $array['atendimento_id']; ?>)" role="button">
+                                        <a class="btn btn-danger btn-sm"  style="color:#fff" href="deletarAgenda.php" onclick="excluir" role="button">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             Cancelar
                                         </a>

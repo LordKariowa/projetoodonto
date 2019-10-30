@@ -53,14 +53,14 @@
                         <form class = "form-group mt-2" action="atualizaCadastro.php" method="post">
 
                             <?php
-                                $sql = "SELECT * FROM pessoa WHERE id_pessoa = '$id'";
+                                $sql = "SELECT * FROM paciente WHERE id = '$id'";
                                 $buscar = mysqli_query($con, $sql);
 
 
                                 while ($array = mysqli_fetch_array($buscar)){
 
 
-                                $idPessoa = $array['id_pessoa'];
+                                //$idPessoa = $array['id_pessoa'];
                                 $cpf = $array['cpf'];
                                 $rg = $array['rg'];
                                 $nome = $array['nome'];
@@ -156,7 +156,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Situação da ficha:</label>
+                                <label>Situação da Ficha:</label>
                                         <select name="situacaoficha" class="form-control" value = "<?php echo $situacaoficha?>">
                                             <option value="" disabled selected>- Escolha -</option>
                                             <option value="ativa">Ativa</option>
