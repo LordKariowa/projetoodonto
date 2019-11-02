@@ -3,7 +3,7 @@
 		<div class = "row">
 			<div id="menu" class="d-flex justify-content-start col-md-4">
 				<div class="d-inline-flex bd-highlight">
-					<img src="img/logo.png">
+					<img src="img/dental+protection.png">
 				</div>
 			</div>
 			<div class="d-flex justify-content-center col-md-4">
@@ -12,10 +12,10 @@
 						<h2 class = "d-none d-xl-block">GERENCIAMENTO E CONTROLE</h2>
 					</div>
 					<div class="d-flex justify-content-center">
-						<h2 class = "d-none d-xl-block">DE</h2>
+						<h2 class = "d-none d-xl-block">DE CONSULTÓRIO ODONTOLÓGICO</h2>
 					</div>
 					<div class="d-flex justify-content-center mb-4">
-						<h2 class = "d-none d-xl-block">CONSULTÓRIO ODONTOLÓGICO</h2>
+						<h2 class = "d-none d-xl-block"></h2>
 					</div>
 				</div>
 			</div>

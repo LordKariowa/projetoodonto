@@ -62,7 +62,7 @@
 							<span  class = "d-inline-flex">
 								<i class="fa fa-calendar mr-2" aria-hidden="true"></i>
 							</span>
-							<span class = "d-inline-flex w-50">
+							<span class = "d-inline-flex w-60">
 								<input class = "form-control" type="date" name="data" style = "width: 85%">
 							</span>
 							<p class="text-center mt-2">

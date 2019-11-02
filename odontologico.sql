@@ -1,290 +1,190 @@
 /*
- Navicat Premium Data Transfer
+Navicat MySQL Data Transfer
 
- Source Server         : localhost
- Source Server Type    : MySQL
- Source Server Version : 100406
- Source Host           : localhost:3306
- Source Schema         : odontologico
+Source Server         : localhost
+Source Server Version : 50505
+Source Host           : localhost:3306
+Source Database       : odontologico
 
- Target Server Type    : MySQL
- Target Server Version : 100406
- File Encoding         : 65001
+Target Server Type    : MYSQL
+Target Server Version : 50505
+File Encoding         : 65001
 
- Date: 16/10/2019 07:24:50
+Date: 2019-10-29 14:45:42
 */
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for atend
--- ----------------------------
-DROP TABLE IF EXISTS `atend`;
-CREATE TABLE `atend`  (
-  `id_atend` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pessoa` int(11) NULL DEFAULT NULL,
-  `id_dentista` int(11) NULL DEFAULT NULL,
-  `nome` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomeconsulta` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `dia` date NOT NULL,
-  `hora` time(0) NOT NULL,
-  `descricao` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomedentista` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `procedimento_1` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `procedimento_2` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `procedimento_3` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `valor_1` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `valor_2` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `valor_3` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_atend`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of atend
--- ----------------------------
-INSERT INTO `atend` VALUES (29, NULL, NULL, 'leandro cerqueira da silva 6', 'Consulta Rotina', '2019-10-07', '00:00:00', '', 'Leandro Cerqueira', '', NULL, NULL, '', NULL, NULL);
-INSERT INTO `atend` VALUES (30, NULL, NULL, 'Matheus Ribeiro Figueiredo', 'Consulta Rotina', '0000-00-00', '00:00:00', '', 'Leandro Cerqueira', '', NULL, NULL, '', NULL, NULL);
-INSERT INTO `atend` VALUES (32, NULL, NULL, 'Matheus Ribeiro Figueiredo', 'Ponte', '0000-00-00', '00:00:00', '', 'Cristiani Pires', '', NULL, NULL, '', NULL, NULL);
-
--- ----------------------------
--- Table structure for atendimento
+-- Table structure for `atendimento`
 -- ----------------------------
 DROP TABLE IF EXISTS `atendimento`;
-CREATE TABLE `atendimento`  (
-  `id_atendimento` int(11) NOT NULL AUTO_INCREMENT,
-  `data` date NULL DEFAULT 'current_timestamp()',
-  `hora` time(0) NULL DEFAULT 'current_timestamp()',
-  `descricao` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_atendimento`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `atendimento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `paciente_id` int(11) DEFAULT NULL,
+  `dentista_id` int(11) DEFAULT NULL,
+  `descricao` text,
+  `data` timestamp NULL DEFAULT NULL,
+  `hora` time DEFAULT '00:00:00',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `fk_a_paciente_id` (`paciente_id`) USING BTREE,
+  KEY `fk_a_dentista_id` (`dentista_id`) USING BTREE,
+  CONSTRAINT `fk_a_dentista_id` FOREIGN KEY (`dentista_id`) REFERENCES `dentista` (`id`),
+  CONSTRAINT `fk_a_paciente_id` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of atendimento
 -- ----------------------------
-INSERT INTO `atendimento` VALUES (1, NULL, '00:00:00', 'descr');
-INSERT INTO `atendimento` VALUES (2, NULL, NULL, 'eee');
-INSERT INTO `atendimento` VALUES (3, NULL, NULL, 'eee');
-INSERT INTO `atendimento` VALUES (4, NULL, NULL, 'cccc');
-INSERT INTO `atendimento` VALUES (5, '2019-10-16', '01:06:50', 'eee');
-INSERT INTO `atendimento` VALUES (6, NULL, NULL, 'www');
-INSERT INTO `atendimento` VALUES (7, NULL, NULL, 'www');
-INSERT INTO `atendimento` VALUES (8, NULL, NULL, 'rrrrrrrrrrrrrrrrrrrrrrrrrrrr');
-INSERT INTO `atendimento` VALUES (9, NULL, NULL, 'rrrrrrrrrrrrrrrrrrrrrrrrrrrr');
-INSERT INTO `atendimento` VALUES (10, NULL, NULL, 'wwwxxx');
-INSERT INTO `atendimento` VALUES (11, NULL, NULL, 'hnhn');
-INSERT INTO `atendimento` VALUES (12, NULL, NULL, 'oioi');
-INSERT INTO `atendimento` VALUES (13, NULL, NULL, 'testesesetsetsets');
+INSERT INTO `atendimento` VALUES ('1', '1', '2', 'ADescricao1', '2019-10-21 21:41:28', '00:00:00');
+INSERT INTO `atendimento` VALUES ('2', '1', '1', 'ADescricao2', '2019-10-21 21:42:01', '00:00:00');
+INSERT INTO `atendimento` VALUES ('3', '2', '1', 'ADescricao3', '2019-10-21 21:48:22', '00:00:00');
+INSERT INTO `atendimento` VALUES ('4', '1', '2', '', '0000-00-00 00:00:00', '10:10:00');
+INSERT INTO `atendimento` VALUES ('5', '1', '2', 'TESTE', '0000-00-00 00:00:00', '10:10:00');
+INSERT INTO `atendimento` VALUES ('6', '1', '2', 'TESTE', '0000-00-00 00:00:00', '10:10:00');
+INSERT INTO `atendimento` VALUES ('7', '1', '2', 'TESTE2', '1977-01-08 00:00:00', '10:10:00');
+INSERT INTO `atendimento` VALUES ('8', '2', '1', 'TESTE24', '1977-01-08 00:00:00', '10:10:00');
+INSERT INTO `atendimento` VALUES ('9', '7', '1', 'hdghdghsdg', '2019-10-29 00:00:00', '18:30:00');
 
 -- ----------------------------
--- Table structure for atendproced
+-- Table structure for `atendimento_tipo`
 -- ----------------------------
-DROP TABLE IF EXISTS `atendproced`;
-CREATE TABLE `atendproced`  (
-  `id_atend_proced` int(11) NOT NULL AUTO_INCREMENT,
-  `valor` double NULL DEFAULT NULL,
-  `id_atendimento` int(11) NULL DEFAULT NULL,
-  `id_consuproced` int(11) NULL DEFAULT NULL,
-  `descricao` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id_atend_proced`) USING BTREE,
-  INDEX `id_atendimento`(`id_atendimento`) USING BTREE,
-  INDEX `id_procedimento`(`id_consuproced`) USING BTREE,
-  CONSTRAINT `atendproced_ibfk_1` FOREIGN KEY (`id_atendimento`) REFERENCES `atendimento` (`id_atendimento`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `atendproced_ibfk_2` FOREIGN KEY (`id_consuproced`) REFERENCES `procedimento` (`id_procedimento`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+DROP TABLE IF EXISTS `atendimento_tipo`;
+CREATE TABLE `atendimento_tipo` (
+  `atendimentotipo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `atendimentonome` varchar(50) NOT NULL,
+  PRIMARY KEY (`atendimentotipo_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for consuproced
+-- Records of atendimento_tipo
 -- ----------------------------
-DROP TABLE IF EXISTS `consuproced`;
-CREATE TABLE `consuproced`  (
-  `id_consuproced` int(11) NOT NULL AUTO_INCREMENT,
-  `nomeproced` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nomedentista` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `evolucao` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `valor` double NULL DEFAULT NULL,
-  PRIMARY KEY (`id_consuproced`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+INSERT INTO `atendimento_tipo` VALUES ('1', 'Rotina');
+INSERT INTO `atendimento_tipo` VALUES ('2', 'Cirurgia');
 
 -- ----------------------------
--- Records of consuproced
--- ----------------------------
-INSERT INTO `consuproced` VALUES (1, 'restauração', 'Cristiani Pires', 'teste1', 10);
-
--- ----------------------------
--- Table structure for dentista
+-- Table structure for `dentista`
 -- ----------------------------
 DROP TABLE IF EXISTS `dentista`;
-CREATE TABLE `dentista`  (
-  `id_dentista` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `cro` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id_dentista`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `dentista` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `cro` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of dentista
 -- ----------------------------
-INSERT INTO `dentista` VALUES (1, 'Cristiani Pires', '123456');
-INSERT INTO `dentista` VALUES (2, 'Adriane Pires', '654321');
-INSERT INTO `dentista` VALUES (3, 'Leandro Cerqueira', '123123');
+INSERT INTO `dentista` VALUES ('1', 'Dentista 1', '111');
+INSERT INTO `dentista` VALUES ('2', 'Denstita 2', '222');
+INSERT INTO `dentista` VALUES ('3', 'Dentista 3', '1231236');
 
 -- ----------------------------
--- Table structure for estoque
+-- Table structure for `estoque`
 -- ----------------------------
 DROP TABLE IF EXISTS `estoque`;
-CREATE TABLE `estoque`  (
-  `id_estoque` int(11) NOT NULL AUTO_INCREMENT,
-  `numeroproduto` int(11) NULL DEFAULT NULL,
-  `nomeproduto` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `categoria` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+CREATE TABLE `estoque` (
+  `estoque_id` int(11) NOT NULL,
+  `numeroproduto` int(11) DEFAULT NULL,
+  `nomeproduto` varchar(200) NOT NULL,
+  `categoria` varchar(100) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  `fornecedor` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `fornecedor` varchar(100) DEFAULT NULL,
   `vencimento` date NOT NULL,
-  `complemento` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_estoque`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `complemento` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`estoque_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of estoque
 -- ----------------------------
-INSERT INTO `estoque` VALUES (1, 1, 'Gaze', 'K', 5, 'Se', '2019-08-05', 'gjdfhgsdfgjks');
 
 -- ----------------------------
--- Table structure for login
+-- Table structure for `paciente`
 -- ----------------------------
-DROP TABLE IF EXISTS `login`;
-CREATE TABLE `login`  (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `login` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `senha` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `perfil` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id_user`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for perfil
--- ----------------------------
-DROP TABLE IF EXISTS `perfil`;
-CREATE TABLE `perfil`  (
-  `id_perfil` int(11) NOT NULL AUTO_INCREMENT,
-  `administrador` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `dentista` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `secretaria` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  INDEX `id_perfil`(`id_perfil`) USING BTREE,
-  CONSTRAINT `perfil_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `login` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for pessoa
--- ----------------------------
-DROP TABLE IF EXISTS `pessoa`;
-CREATE TABLE `pessoa`  (
-  `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
-  `cpf` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `rg` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nome` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `orcamento` varchar(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `telefone` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `celular` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `email` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `cep` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `endereco` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `complemento` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `bairro` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+DROP TABLE IF EXISTS `paciente`;
+CREATE TABLE `paciente` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `cpf` varchar(15) NOT NULL,
+  `rg` varchar(15) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  `celular` varchar(15) NOT NULL,
+  `cep` varchar(15) NOT NULL,
+  `endereco` varchar(100) NOT NULL,
+  `bairro` varchar(50) NOT NULL,
   `nascimento` date NOT NULL,
-  `cidade` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `uf` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `situacaoficha` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `doencabase` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `alergia` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `medicamentos` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `cirurgia` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `internacoes` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `pa` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `queixaprinc` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_pessoa`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `cidade` varchar(30) NOT NULL,
+  `uf` varchar(5) DEFAULT NULL,
+  `doencabase` varchar(255) DEFAULT NULL,
+  `alergia` varchar(255) DEFAULT NULL,
+  `medicamentos` varchar(255) DEFAULT NULL,
+  `cirurgia` varchar(255) DEFAULT NULL,
+  `internacoes` varchar(255) DEFAULT NULL,
+  `pa` varchar(255) DEFAULT NULL,
+  `queixaprinc` varchar(255) DEFAULT NULL,
+  `situacaoficha` varchar(10) NOT NULL,
+  `orcamento` varchar(5) NOT NULL,
+  `complemento` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of pessoa
+-- Records of paciente
 -- ----------------------------
-INSERT INTO `pessoa` VALUES (1, '17362020732', '12345678', 'Matheus Ribeiro Figueiredo', 'NÃ£', '26627474', '994606169', 'matheusribeirofg1@gmail.com', '25550590', 'Rua belkiss', '', 'Coelho da Rocha', '1999-11-16', 'Rio de Janeiro', 'RJ', 'ativa', 'NÃ£o', 'nÃ£o', 'nÃ£o', 'NÃ£o', 'NÃ£o', 'nÃ£o', 'Clareamento');
-INSERT INTO `pessoa` VALUES (2, '13195313772', '12345678', 'Marcus Vinicius', 'NÃ£', '12345678', '994606169', 'marcus@gmail.com', '25550590', 'Rua do catete', '', 'Catete', '1995-11-07', 'Rio de Janeiro', 'RJ', 'ativa', 'NÃ£o', 'NÃ£o', 'NÃ£o', 'NÃ£o', 'NÃ£o', 'NÃ£o', 'Clareamento');
-INSERT INTO `pessoa` VALUES (3, '12345678912', '102345678', 'matheus', 'nao', '103245678', '123456789', 'matheusribeirofg1@gmail.com', '25550590', 'Rua belkiss', '', 'Catete', '1900-11-11', 'Rio de Janeiro', 'RJ', 'ativa', 'NÃ£o', 'nÃ£o', 'NÃ£o', 'NÃ£o', 'NÃ£o', 'NÃ£o', 'Dor de dente');
-INSERT INTO `pessoa` VALUES (4, '17362020732', '12345678', 'leandro', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (5, '17362020732', '12345678', 'matheus', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (6, '095.443.637-77', '', 'cerqueira.leandro', '', '', '', 'le22cerqueira@gmail.com', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (7, '095.443.637-77', '', 'cerqueira.leandro', '', '', '', 'le22cerqueira@yahoo.com.br', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (8, '', '', 'leandro cerqueira da silva 2', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (9, '', '', 'leandro cerqueira da silva 3', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (10, '', '', 'leandro cerqueira da silva 4', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (11, '', '', 'leandro cerqueira da silva 5', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (12, '', '', 'Helen Soares Cerqueira', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (13, '', '', 'leandro cerqueira da silva 6', '', '', '21983656429', 'le22cerqueira@gmail.com', 'rj', 'Tijuca', '', '', '1983-03-11', 'Rio de Janeiro', 'Rio d', '', '', '', '', '', '', '', '');
-INSERT INTO `pessoa` VALUES (14, '3334', '3334', '3334', '333', '3334', '3334', '33334@333.com', '3334', '3334', '4', '3334', '4444-03-31', '3334', '334', '334', '4', '4', '4', '4', '4', '4', '4');
+INSERT INTO `paciente` VALUES ('1', 'Paciente 1', 'p1@email.com.br', '', '', '', '', '', '', '', '1983-03-11', '', '', '', '', '', '', '', '', '', 'ativa', '', '');
+INSERT INTO `paciente` VALUES ('2', 'Paciente 2', 'p2@email.com', '', '', '', '', '', '', '', '0000-00-00', '', null, null, null, null, null, null, null, null, '', '', '');
+INSERT INTO `paciente` VALUES ('3', 'paciente 3', 'p3@email.com', '', '', '', '', '', '', '', '0000-00-00', '', null, null, null, null, null, null, null, null, '', '', '');
+INSERT INTO `paciente` VALUES ('7', 'Paciente 07', 'le22cerqueira@gmail.com', '123.654.789-00', '111111', '21983656429', '21983656429', 'rj', 'Rua São Miguel, 556 Casa 62', 'Tijuca', '2019-10-16', 'Rio de Janeiro', 'RJ', 'Não Existente', 'Não tem', 'Não', 'Só algumas', 'Uma vez', 'Não', 'Dor de Dente', 'inativa', 'Sim', '556 Casa 62');
+INSERT INTO `paciente` VALUES ('8', 'Paciente 4', 'le22cerqueira@yahoo.com.br', '111.222.333-44', '010101', '21983656429', '21983656429', '20530-420', 'Rua São Miguel, 556 Casa 62', 'Tijuca', '2019-10-14', 'Rio de Janeiro', 'RJ', 'Não Existente', 'Sim', 'Não', 'Não', 'Não', 'Não', 'sem', 'ativa', 'Sim', '500 CASA 62');
 
 -- ----------------------------
--- Table structure for pessoa_atendimento
--- ----------------------------
-DROP TABLE IF EXISTS `pessoa_atendimento`;
-CREATE TABLE `pessoa_atendimento`  (
-  `id_atendimento` int(11) NOT NULL,
-  `id_pessoa` int(11) NULL DEFAULT NULL,
-  `id_dentista` int(11) NULL DEFAULT NULL,
-  `id_tipoconsulta` int(11) NULL DEFAULT NULL,
-  INDEX `id_pessoa`(`id_pessoa`) USING BTREE,
-  CONSTRAINT `pessoa_atendimento_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of pessoa_atendimento
--- ----------------------------
-INSERT INTO `pessoa_atendimento` VALUES (1, 14, 1, 1);
-INSERT INTO `pessoa_atendimento` VALUES (2, 14, 2, 2);
-INSERT INTO `pessoa_atendimento` VALUES (3, 14, 3, 3);
-INSERT INTO `pessoa_atendimento` VALUES (4, 14, 1, 4);
-INSERT INTO `pessoa_atendimento` VALUES (4, 14, 1, 4);
-INSERT INTO `pessoa_atendimento` VALUES (9, 14, 2, 2);
-INSERT INTO `pessoa_atendimento` VALUES (10, 14, 1, 1);
-INSERT INTO `pessoa_atendimento` VALUES (11, 14, 2, 2);
-INSERT INTO `pessoa_atendimento` VALUES (12, 14, 2, 2);
-INSERT INTO `pessoa_atendimento` VALUES (13, 14, 2, 2);
-
--- ----------------------------
--- Table structure for procedimento
+-- Table structure for `procedimento`
 -- ----------------------------
 DROP TABLE IF EXISTS `procedimento`;
-CREATE TABLE `procedimento`  (
-  `id_procedimento` int(11) NOT NULL AUTO_INCREMENT,
-  `tipoproce` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_procedimento`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `procedimento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `atendimento_id` int(11) DEFAULT NULL,
+  `procedimento_tipo_id` int(11) DEFAULT NULL,
+  `valor` double DEFAULT NULL,
+  `obs` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `fk_p_procedimento_tipo_id` (`procedimento_tipo_id`) USING BTREE,
+  KEY `fk_p_atendimento_id` (`atendimento_id`) USING BTREE,
+  CONSTRAINT `fk_p_atendimento_id` FOREIGN KEY (`atendimento_id`) REFERENCES `atendimento` (`id`),
+  CONSTRAINT `fk_p_procedimento_tipo_id` FOREIGN KEY (`procedimento_tipo_id`) REFERENCES `procedimento_tipo` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of procedimento
 -- ----------------------------
-INSERT INTO `procedimento` VALUES (1, 'RestauraÃ§Ã£o');
-INSERT INTO `procedimento` VALUES (2, 'Limpeza');
-INSERT INTO `procedimento` VALUES (3, 'Canal');
+INSERT INTO `procedimento` VALUES ('1', '1', '1', '10', '');
+INSERT INTO `procedimento` VALUES ('2', '1', '2', '20', '');
+INSERT INTO `procedimento` VALUES ('3', '2', '3', '30', '');
+INSERT INTO `procedimento` VALUES ('4', '2', '1', '10', '');
+INSERT INTO `procedimento` VALUES ('5', null, null, '150', 'Paciente 2');
+INSERT INTO `procedimento` VALUES ('6', null, null, '150', 'teste');
+INSERT INTO `procedimento` VALUES ('7', null, null, '150', 'Paciente 2');
 
 -- ----------------------------
--- Table structure for tipoconsulta
+-- Table structure for `procedimento_tipo`
 -- ----------------------------
-DROP TABLE IF EXISTS `tipoconsulta`;
-CREATE TABLE `tipoconsulta`  (
-  `id_tipoconsulta` int(11) NOT NULL AUTO_INCREMENT,
-  `nomeconsulta` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id_tipoconsulta`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+DROP TABLE IF EXISTS `procedimento_tipo`;
+CREATE TABLE `procedimento_tipo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of tipoconsulta
+-- Records of procedimento_tipo
 -- ----------------------------
-INSERT INTO `tipoconsulta` VALUES (1, 'Consulta Rotina');
-INSERT INTO `tipoconsulta` VALUES (2, 'Cirurgia');
-INSERT INTO `tipoconsulta` VALUES (3, 'Ponte');
-INSERT INTO `tipoconsulta` VALUES (4, 'Teste');
-
-SET FOREIGN_KEY_CHECKS = 1;
+INSERT INTO `procedimento_tipo` VALUES ('1', 'Revisão');
+INSERT INTO `procedimento_tipo` VALUES ('2', 'Limpeza');
+INSERT INTO `procedimento_tipo` VALUES ('3', 'Canal');
+INSERT INTO `procedimento_tipo` VALUES ('4', '');
+INSERT INTO `procedimento_tipo` VALUES ('5', '');
+INSERT INTO `procedimento_tipo` VALUES ('6', '');
+INSERT INTO `procedimento_tipo` VALUES ('7', 'Restauração');

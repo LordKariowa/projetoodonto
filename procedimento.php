@@ -41,9 +41,7 @@
 
         $row = mysqli_fetch_assoc($busca);
 
-        echo $row['paciente_nome'];        
-        echo $row['dentista_nome'];
-        echo $row['data'];    
+          
                     
         ?>
 
@@ -58,19 +56,21 @@
          
             <button type="button" class="btn btn-primary btn-md ml-1" data-toggle="modal" data-target="#modal1">Cadastrar Procedimentos</button>
             <input type="button" class ="btn btn-dark ml-5" onclick="window.print();" value="Imprimir">
+
+            <a class="btn btn-success ml-5"  style="color:#fff" href="agenda.php" role="button">Voltar</a>
 </div>
                             <div class="form-row">
                                         <div class="form-group col-md-3">
                                             <label for="paciente_nome">Paciente:</label>
-                                            <input type="text" class="form-control" id="paciente_nome" placeholder="" name = "paciente_nome"  >
+                                            <input type="text" class="form-control" id="paciente_nome" placeholder="" name = "paciente_nome" value = "<?php echo $row['paciente_nome']?>" disabled >
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="dentista_nome">Dentista:</label>
-                                            <input type="text" class="form-control" id="dentista_nome" placeholder="" name = "dentista_nome">
+                                            <input type="text" class="form-control" id="dentista_nome" placeholder="" name = "dentista_nome" value = "<?php echo $row['dentista_nome'];?>" disabled>
                                         </div> 
                                         <div class="form-group col-md-2">
                                             <label for="data">Data:</label>
-                                            <input type="text" class="form-control" id="cep" placeholder="" name = "data">
+                                            <input type="text" class="form-control" id="cep" placeholder="" name = "data" value = "<?php echo $row['data'];?>" disabled>
                                         </div>
                             </div>
 
