@@ -7,7 +7,8 @@
 	$dentista_id   =  $_POST['dentista_id'];	
 	$descricao     =  $_POST['descricao'];	
 	$data          =  $_POST['data'];	
-	$hora          =  $_POST['hora'];	
+	$hora          =  $_POST['hora'];
+	$situacao      =  $_POST['gender'];
 
     /*
 	$nomeconsulta =  $_POST['nomeconsulta'];	
@@ -26,9 +27,9 @@
     };
     */
 
-   	$sql = "INSERT INTO atendimento VALUES(null, '{$paciente_id}', '{$dentista_id}', '{$descricao}', '{$data}', '{$hora}')"; 
+   	$sql = "INSERT INTO atendimento VALUES(null, '{$paciente_id}', '{$dentista_id}', '{$data}', '{$descricao}', '{$hora}', '{$situacao}')"; 
    	echo $sql;
 	$msg = (mysqli_query($con, $sql)) ? "Gravado com sucesso" : "Erro ao gravar";
 
-	header("location:agenda.php?msg=".$msg);
+	header("location:msgAtendimento.php?msg=".$msg);
 ?>

@@ -15,31 +15,37 @@
         </script>
 	</head>
 	<body>
-		
 		<?php include 'header.php'?>
-
     <?php
+        include_once 'conexao.php';    
+        $atendimento_id = $_GET['atendimento_id'];
 
-    include_once 'conexao.php';
-                            
-    $atendimento_id = $_GET['atendimento_id'];
-
-                        //a.nome, 
-
-                        $sql = "SELECT 
-                        a.id, a.data, a.descricao, p.nome AS paciente_nome, d.nome AS dentista_nome
-                        FROM atendimento a, paciente p, dentista d
-                        WHERE 
-                        a.paciente_id = p.id
-                        AND
-                        a.dentista_id = d.id
-                        AND
-                        a.id = $atendimento_id";
-        $busca = mysqli_query($con, $sql);
-        $row = mysqli_fetch_assoc($busca);
-        $row['data'] = explode('-', $row['data']);
-        $newdata = $row['data'][2] . "-" . $row['data'][1]. "-" . $row['data'][0];
-        ?>  
+                        $sql = "SELECT DISTINCT
+                                    a.id,
+                                    a.data,
+                                    a.descricao,
+                                    p.nome AS paciente_nome,
+                                    d.nome AS dentista_nome,
+                                    prt.nome as procedimento_nome
+                                    FROM
+                                    atendimento a,
+                                    paciente p,
+                                    dentista d,
+                                    procedimento pr,
+                                    procedimento_tipo prt
+                                    WHERE 
+                                    a.paciente_id = p.id
+                                    AND 
+                                    a.dentista_id = d.id
+                                    AND
+                                    prt.id = pr.procedimento_tipo_id
+                                    AND
+                                    a.id = 11";
+                        $busca = mysqli_query($con, $sql);
+                        $row = mysqli_fetch_assoc($busca);
+                        $row['data'] = explode('-', $row['data']);
+                        $newdata = $row['data'][2] . "-" . $row['data'][1]. "-" . $row['data'][0];
+                        ?>  
         <h1 class = "text-center mb-4">Procedimentos Realizados</h1>
 <div class = "pl-5 pr-5">
 
@@ -115,7 +121,7 @@
         <table class="table w-100 mt-4 table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">ID </th>
+                    <th scope="col">Procedimento </th>
                     <th scope="col">valor</th>
                     <th scope="col">OBS</th>                               
                     <th scope = "col"></th>
@@ -131,18 +137,19 @@
                 $sql = "SELECT 
                         pr.id,
                         pr.valor,
-                        pr.obs
-                        FROM procedimento pr
-                        WHERE 
+                        pr.obs,
+                        prt.nome AS procedimento_nome
+                        FROM procedimento pr, procedimento_tipo prt
+                        WHERE
+                        prt.id = pr.procedimento_tipo_id
+                        AND
                         pr.atendimento_id = $atendimento_id";
-                
-                
                 //echo($sql);
                 
                     $busca = mysqli_query($con, $sql);
 
                     while($array = mysqli_fetch_array($busca)){
-                        $id     = $array['id'];
+                        $id     = $array['procedimento_nome'];
                         $valor  = $array['valor'];
                         $obs    = $array['obs'];
                 ?>

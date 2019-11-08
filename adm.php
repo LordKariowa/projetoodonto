@@ -27,6 +27,13 @@
           }
         }
     </script>
+     <script>
+      function excluirDentista(id){
+          if(confirm('Deseja realmente excluir este Dentista?')){
+              location.href = 'deletarDentista.php?id=' + id;   
+          }
+        }
+    </script>
   </head>
   <body>
 
@@ -38,7 +45,7 @@
           <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal1">Cadastro de Usuário</button>
         </div>
         <div class = "d-flex justify-content-center col-md-6">
-          <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal2">Cadastro Tipo Consulta</button>
+          <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal2">Cadastro de Atendimento</button>
         </div>      
       </div>
     <span class = "d-flex d-inline-flex mb-2">
@@ -146,7 +153,7 @@
                 <td><?php echo $login?></td>              
                 <td><?php echo $perfil?></td>             
                 <td class = "d-flex justify-content-end">
-                  <a class="btn btn-warning btn-sm mr-3"  style="color:#fff" href="editarCadastro.php?id=<?php echo $array['id_user'] ?>" role="button"><i class="fa fa-pencil-square-o"></i> Editar</a> 
+                  <a class="btn btn-warning btn-sm mr-3"  style="color:#fff" href="editarLogin.php?id=<?php echo $array['id_user'] ?>" role="button"><i class="fa fa-pencil-square-o"></i> Editar</a> 
                   <a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirLogin(<?php echo $array['id_user']?>)" role="button"><i class="fa fa-trash-o"></i> Excluir</a>
                 </td>
               </tr>
@@ -200,9 +207,9 @@
             ?>
               <tr>
                 <td><?php echo $atendimentonome?></td>                                   
-                <td class = "d-flex justify-content-end">
-                 <!-- <a class="btn btn-warning btn-sm mr-3"  style="color:#fff" href="editarAtendimento.php?id=<?php //echo $array['id_atendimento'] ?>" role="button"><i class="fa fa-pencil-square-o"></i> Editar</a>
-                  <a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirAtendimento(<?php //echo $array['id_atendimento']?>)" role="button"><i class="fa fa-trash-o"></i> Excluir</a> -->
+                 <td class = "d-flex justify-content-end">
+                  <a class="btn btn-warning btn-sm mr-3"  style="color:#fff" href="editarAtendimento.php?id=<?php echo $array['atendimentotipo_id'] ?>" role="button"><i class="fa fa-pencil-square-o"></i> Editar</a> 
+                  <a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirAtendimento(<?php echo $array['atendimentotipo_id']?>)" role="button"><i class="fa fa-trash-o"></i> Excluir</a>
                 </td>
               </tr>  
             <?php } ?>
@@ -243,7 +250,7 @@
 
     <div class = "row mt-5">
       <div class = "d-flex justify-content-center col-md-6">
-        <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal4">Cadastro do Dentista</button>
+        <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal4">Cadastro de Dentista</button>
       </div>
       <div class = "d-flex justify-content-center col-md-6">
         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal3">Cadastro de Procedimentos</button>
@@ -274,11 +281,10 @@
             <tr>
               <td><?php echo $nomedentista?></td>
               <td><?php echo $cro?></td>                
-              <td class = "d-flex justify-content-end">
-               <!-- <a class="btn btn-warning btn-sm mr-3"  style="color:#fff" href="editarProcedimento.php?id=<?php //echo $array['id_procedimento']?>" role="button"><i class="fa fa-pencil-square-o"></i> Editar</a> -->
-
-                <!--<a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirProcedimento(<?php //echo $array['id_procedimento']?>)" role="button"><i class="fa fa-trash-o"></i> Excluir</a> -->
-              </td>
+               <td class = "d-flex justify-content-end">
+                  <a class="btn btn-warning btn-sm mr-3"  style="color:#fff" href="editarDentista.php?id=<?php echo $array['id'] ?>" role="button"><i class="fa fa-pencil-square-o"></i> Editar</a> 
+                  <a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirDentista(<?php echo $array['id']?>)" role="button"><i class="fa fa-trash-o"></i> Excluir</a>
+                </td>
             </tr>   
             <?php } ?>
           </tbody>
@@ -331,10 +337,10 @@
             ?>
             <tr>
               <td><?php echo $nome?></td>                
-              <td class = "d-flex justify-content-end">
-              <!--  <a class="btn btn-warning btn-sm mr-3"  style="color:#fff" href="editarProcedimento.php?id=<?php //echo $array['id_procedimento']?>" role="button"><i class="fa fa-pencil-square-o"></i> Editar</a> 
-                <a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirProcedimento(<?php //echo $array['id_procedimento']?>)" role="button"><i class="fa fa-trash-o"></i> Excluir</a> -->
-              </td>
+             <td class = "d-flex justify-content-end">
+                  <a class="btn btn-warning btn-sm mr-3"  style="color:#fff" href="editarProcedimentos.php?id=<?php echo $array['id'] ?>" role="button"><i class="fa fa-pencil-square-o"></i> Editar</a> 
+                  <a class="btn btn-danger btn-sm"  style="color:#fff" onclick = "excluirProcedimento(<?php echo $array['id']?>)" role="button"><i class="fa fa-trash-o"></i> Excluir</a>
+                </td>
             </tr>   
             <?php } ?>
           </tbody>

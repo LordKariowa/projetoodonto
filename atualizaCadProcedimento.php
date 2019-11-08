@@ -1,18 +1,11 @@
 <?php
     include 'conexao.php';
     $id = $_POST['id'];
-    $dia =  $_POST['dia'];
-    $hora =  $_POST['hora'];
-    $descricao =  $_POST['descricao'];
-    $dentista_id =  $_POST['nomedentista'];
-    $situacao = $_POST['gender'];
+    $nome = $_POST['nome'];
 
-
-    $sql = "UPDATE `atendimento` SET `dentista_id` = $dentista_id,`data` = '$dia', `descricao` = '$descricao', `hora` = '$hora', `situacao` = '$situacao' WHERE id = $id";
-    $atualizar = mysqli_query($con, $sql);
+    $sql = "UPDATE procedimento_tipo SET  `nome` = '$nome' WHERE `id` = $id";
+    $atualizar = mysqli_query($con, $sql)
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +21,7 @@
         <center>
             <h3>Editado com Sucesso!</h3>
             <div style="margin-top: 10px">
-            <a href="agenda.php" class="btn btn-sm btn-success" style="color:#fff">Voltar</a>
+            <a href="adm.php" class="btn btn-sm btn-success" style="color:#fff">Voltar</a>
             </div>    
         </center>
         </div>

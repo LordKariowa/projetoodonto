@@ -198,8 +198,8 @@
                         if($totalRegistros > 0){
                 ?>
                 <!--Modal  Tela de Cadastro-->
-            <div class = "overflow-auto ml-1 mr-1" style = "max-height: 550px">
-                <table class="table border table-striped">
+            <div class = "overflow-auto ml-1 mr-1 mt-3" style = "max-height: 550px">
+                <table class="table table-hover">
                     <thead id = "theadCadastro" class = "thead-dark">
                         <tr>
                             <th scope="col">Nome</th>
@@ -218,23 +218,14 @@
 
 
                                 //$situacaoficha = $array['situacaoficha'];
-                                //$nascimento = $array['nascimento'];
-                                //$dtNasci = explode('-', $nascimento);
-                                //$datadeNascimento = $dtNasci[2] . "-" . $dtNasci[1]. "-" . $dtNasci[0];
+                                $nascimento = $array['nascimento'];
+                                $dtNasci = explode('-', $nascimento);
+                                $datadeNascimento = $dtNasci[2] . "-" . $dtNasci[1]. "-" . $dtNasci[0];
                             ?>
                             <tr><td><?php echo $array['nome']?></td>
-                                <td><?php echo $array['nascimento']?></td>
+                                <td><?php echo $datadeNascimento?></td>
                                 <td><?php echo $array['celular']?></td>                                
                                 <td><?php echo $array['email']?></td>
-
-                                <!--<td><?php echo $array['nome']?></td>
-                                <td><?php echo $array['cpf']?></td>
-                                <td><?php echo $array['rg']?></td>                               
-                                <td><?php echo $orcamento?></td>
-                                <td><?php echo $array['telefone']?></td>
-                                <td><?php echo $array['celular']?></td>
-                                <td><?php echo $situacaoficha?></td>
-                                <td><?php echo $datadeNascimento?></td> -->
                                 <td class = "d-flex justify-content-around">
 
                                     <a style = "font-size:15px" class="btn btn-primary btn-sm"  style="color:#fff" href="#" role="button">

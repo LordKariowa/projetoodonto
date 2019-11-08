@@ -16,22 +16,7 @@
 	</head>
 <body>
 	<?php include 'header.php'?>
-    <h1 class = "text-center mb-4">Agendamento de Pacientes</h1>
-
-    <div class="container">
-        <?php $msg = $_GET["msg"];
-             if($msg == "Gravado com sucesso"){  ?>
-                <div class="alert alert-success" role="alert">
-                    <?php echo $msg;?>
-                </div>
-        <?php } else {?>
-                <div class="alert alert-danger" role="alert">
-                    <?php echo $msg;?>
-                </div>
-        <?php };?>
-        <!--<a href="agenda.php">Voltar</a>-->
-    </div>
-</body>
+    <h1 class = "text-center mb-3">Agendamento de Pacientes</h1>
         	<div class = "pl-5 pr-5">
                 <span class = "d-flex d-inline-flex mb-2">
                         <form class="form-inline">
@@ -73,28 +58,7 @@
                                                    <option value='<?php echo $id ?>'><?php echo $nome ?></option> 
                                             <?php } ?>
                                             </select>
-                                        </div> 
-                                     <!-- AQUI É A LISTA DE SELEÇÃO DA consultas-->
-                                       <!--
-                                        <div class="form-group">
-                                            <label>Tipo da Consulta:</label>
-                                            <select class="form-control" name="tipo_de_atendimento" id="atendimentonome" placeholder="" name="atendimentonome">
-                                                <?php
-                                                    /*
-                                                   include_once 'conexao.php';
-
-                                                    $sql = "SELECT * FROM atendimento_tipo";
-                                                    $busca = mysqli_query($con, $sql);
-                                                    while($array = mysqli_fetch_array($busca)){                                    
-                                                        $atendimentonome = $array['atendimentonome'];
-                                                    */
-                                                ?>
-                                                    <!--<option><?php //echo $atendimentonome ?></option> -->
-                                                <?php //} ?>                          
-                                                <!--
-                                            </select>
-                                        </div>    
-                                        -->
+                                        </div>   
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label for="data">Data:</label>
@@ -125,7 +89,7 @@
                                         </div>
 
                                         <div class="row">
-                                         <div class="form-group col-md-12">
+                                        <div class="form-group col-md-12">
                                               
                                             </div> 
                                         </div>
@@ -133,18 +97,15 @@
                                             <label for="obs">Descrição:</label>
                                             <textarea type="text" class="form-control" id="descricao" placeholder="" name = "descricao"></textarea>
                                         </div>  
-                                        <div class = "d-flex justify-content-around">                                 
+                                        <div class = "d-flex justify-content-around">
                                             <div class="form-check form-check-inline">  
-                                                <input class="form-check-input" type="radio" name="gender" value="agendar" checked> Agendar<br>
-                                            </div>
+                                                <input class="form-check-input" type="radio" name="gender" value="Agendado">Agendar<br>
+                                            </div>                                 
                                             <div class="form-check form-check-inline">  
-                                                <input class="form-check-input" type="radio" name="gender" value="confirmar"> Confirmar<br>
+                                                <input class="form-check-input" type="radio" name="gender" value="Confirmado"> Confirmar<br>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" value="cancelar"> Cancelar<br>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" value="realizadas"> Realizadas
+                                                <input class="form-check-input" type="radio" name="gender" value="Cancelado"> Cancelar<br>
                                             </div>
                                         </div>
                                         <input type="submit" class="btn btn-primary float-right mt-3" value = "Cadastrar">
@@ -157,15 +118,14 @@
                     </div>
                 </span>
 
-                <div class = "overflow-auto ml-1 mr-1" style = "max-height: 550px">
+                <div class = "overflow-auto ml-1 mr-1" style = "max-height: 520px">
                     <table class="table w-100 mt-4 table-hover">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">atendimento_id </th>
-                                <!--<th scope="col">atendimento_nome</th>-->
-                                <th scope="col">paciente_nome</th>                               
-                                <th scope="col">dentista_nome</th> 
-                                <th scope="col">data</th>                               
+                                <th scope="col">Nome do Paciente</th>                               
+                                <th scope="col">Nome do Dentista</th> 
+                                <th scope="col">Data</th>
+                                <th scope="col">Hora</th>                            
                                 <th scope = "col"></th>
                             </tr>
                         </thead>
@@ -173,56 +133,44 @@
                             <?php
 
                                 include_once 'conexao.php';
-                                //$sql = "SELECT * FROM atendimento";
-                                //a.data, 
-                                //a.descricao, 
-                                //a.nome AS atendimento_nome, 
-
-
                             $sql = "SELECT 
-                                    a.id AS atendimento_id, 
+                                    a.id AS atendimento_id,
                                     p.nome AS paciente_nome, 
                                     d.nome AS dentista_nome,
-                                    a.data
+                                    a.data,
+                                    a.hora as atendimento_hora
                                     FROM atendimento a, paciente p, dentista d
                                     WHERE 
                                     a.paciente_id = p.id
                                     AND
-                                    a.dentista_id = d.id";
+                                    a.dentista_id = d.id ORDER BY data, hora";
                                 $busca = mysqli_query($con, $sql);
 
                                 while($array = mysqli_fetch_array($busca)){
                                     $atendimento_id = $array['atendimento_id'];
-                                    //$atendimento_nome = $array['atendimento_nome'];
                                     $paciente_nome = $array['paciente_nome'];
                                     $dentista_nome = $array['dentista_nome'];
                                     $data = $array['data'];
-                                    //$hora = $array['hora'];
-                                    //Ajuste da formatação da data DD/MM/AAAA
-                                    //$dtConsu = explode('-', $data);
-                                    //$diaConsu = $dtConsu[2] . "-" . $dtConsu[1]. "-" . $dtConsu[0];
+                                    $hora = substr($array['atendimento_hora'], 0 , -3);
+
+                                    $data = explode('-', $data);
+                                    $newdata = $data[2] . "-" . $data[1]. "-" . $data[0];
                             ?>
                                 <tr>                                    
-                                    <td><?php echo $atendimento_id?></td>
-                                    <!--<td><?php //echo $atendimento_nome?></td>-->
                                     <td><?php echo $paciente_nome?></td>                                   
                                     <td><?php echo $dentista_nome?></td>
-                                    <td><?php echo $data?></td>
+                                    <td><?php echo $newdata?></td>
+                                    <td><?php echo $hora?></td>
                                     <td class = "d-flex justify-content-around">
                                         <a class="btn btn-success btn-sm" href="procedimento.php?atendimento_id=<?php echo $atendimento_id ?>" role="button">
                                             <i class="fa fa-medkit mr-2" aria-hidden="true"></i>
                                             Procedimentos
-                                        </a>      
-
-                                        <a class="btn btn-primary btn-sm"  style="color:#fff" href="#" role="button">
-                                            <i class="fa fa-eye mr-1" aria-hidden="true"></i> 
-                                            Visualizar Ficha
-                                        </a>           
-                                        <a class="btn btn-warning btn-sm"  style="color:#fff" href="editaragenda.php?id>" role="button">
+                                        </a>               
+                                        <a class="btn btn-warning btn-sm"  style="color:#fff" href="editaragenda.php?id=<?php echo $atendimento_id?>" role="button">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             Editar
                                         </a>  
-                                        <a class="btn btn-danger btn-sm"  style="color:#fff" href="deletarAgenda.php" onclick="excluir" role="button">
+                                        <a class="btn btn-danger btn-sm"  style="color:#fff" onclick="excluir(<?php echo $array['atendimento_id']?>)" role="button">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             Cancelar
                                         </a>

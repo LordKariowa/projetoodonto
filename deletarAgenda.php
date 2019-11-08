@@ -4,7 +4,7 @@
 	include_once 'conexao.php';
 	$id = $_GET['id'];
 
-	$sql =  "DELETE FROM atendimento where atendimento_id = $id";
+	$sql =  "DELETE FROM atendimento where id = $id";
 
 	$deletar = mysqli_query($con, $sql);
 ?>
