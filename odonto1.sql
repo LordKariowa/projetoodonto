@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Nov-2019 às 22:18
--- Versão do servidor: 10.1.38-MariaDB
--- versão do PHP: 7.1.27
+-- Tempo de geração: 25-Nov-2019 às 21:16
+-- Versão do servidor: 10.4.6-MariaDB
+-- versão do PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `odonto1`
+-- Banco de dados: `odonto1`
 --
 
 -- --------------------------------------------------------
@@ -33,24 +33,18 @@ CREATE TABLE `atendimento` (
   `paciente_id` int(11) DEFAULT NULL,
   `dentista_id` int(11) DEFAULT NULL,
   `data` date DEFAULT NULL,
-  `descricao` text,
+  `descricao` text DEFAULT NULL,
   `hora` time DEFAULT '00:00:00',
   `situacao` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `atendimento`
 --
 
 INSERT INTO `atendimento` (`id`, `paciente_id`, `dentista_id`, `data`, `descricao`, `hora`, `situacao`) VALUES
-(9, 10, 5, '2019-11-05', 'Nenhuma', '13:00:00', NULL),
-(10, 9, 5, '2019-11-05', 'Nenhuma', '11:00:00', NULL),
-(11, 11, 6, '2019-11-05', 'Nenhuma', '10:00:00', NULL),
-(12, 9, 5, '2019-11-06', 'Nenhuma', '12:00:00', 'Confirmado'),
-(13, 10, 6, '2019-11-06', 'Nenhuma', '11:00:00', 'Agendado'),
-(15, 11, 6, '2019-11-06', 'Nenhuma', '10:00:00', 'Agendado'),
-(16, 9, 6, '2019-11-08', 'Nenhuma\r\n', '12:00:00', 'Agendado'),
-(18, 10, 5, '2019-11-22', 'Nenhuma', '22:00:00', 'Agendado');
+(1, 1, 2, '2019-11-25', 'Nenhuma', '10:00:00', 'Agendado'),
+(2, 2, 2, '2019-11-25', 'Nenhuma', '09:00:00', 'Agendado');
 
 -- --------------------------------------------------------
 
@@ -68,9 +62,8 @@ CREATE TABLE `atendimento_tipo` (
 --
 
 INSERT INTO `atendimento_tipo` (`atendimentotipo_id`, `atendimentonome`) VALUES
-(2, 'Cirurgia'),
-(3, 'Rotina'),
-(5, 'Bucomaxilo');
+(1, 'Revisão'),
+(2, 'Cirurgia');
 
 -- --------------------------------------------------------
 
@@ -82,15 +75,15 @@ CREATE TABLE `dentista` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `cro` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `dentista`
 --
 
 INSERT INTO `dentista` (`id`, `nome`, `cro`) VALUES
-(5, 'Cristiane', '12345678'),
-(6, 'Adriane', '12345678');
+(1, 'Cristiane', '12345678'),
+(2, 'Adriane', '12345678');
 
 -- --------------------------------------------------------
 
@@ -108,13 +101,6 @@ CREATE TABLE `estoque` (
   `vencimento` date NOT NULL,
   `complemento` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `estoque`
---
-
-INSERT INTO `estoque` (`estoque_id`, `numeroproduto`, `nomeproduto`, `categoria`, `quantidade`, `fornecedor`, `vencimento`, `complemento`) VALUES
-(1, 252, 'Gaze', 'X', 200, 'Y', '2024-12-22', 'Nenhuma');
 
 -- --------------------------------------------------------
 
@@ -135,8 +121,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id_user`, `nome`, `login`, `senha`, `perfil`) VALUES
-(2, 'Matheus Ribeiro Figueiredo', 'harury', '123', 'Administrativo'),
-(3, 'Jorcelane Teixeira', 'jor46', 'mup2390', 'Visitante');
+(1, 'Matheus', 'admin', '123456', 'Admnistrador');
 
 -- --------------------------------------------------------
 
@@ -168,16 +153,15 @@ CREATE TABLE `paciente` (
   `situacaoficha` varchar(10) NOT NULL,
   `orcamento` varchar(5) NOT NULL,
   `complemento` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `paciente`
 --
 
 INSERT INTO `paciente` (`id`, `nome`, `email`, `cpf`, `rg`, `telefone`, `celular`, `cep`, `endereco`, `bairro`, `nascimento`, `cidade`, `uf`, `doencabase`, `alergia`, `medicamentos`, `cirurgia`, `internacoes`, `pa`, `queixaprinc`, `situacaoficha`, `orcamento`, `complemento`) VALUES
-(9, 'Matheus Ribeiro Figueiredo', 'matheusribeirofg1@gmail.com', '17362020732', '12345678', '26627474', '994606169', '25550590', 'Rua Belkiss', 'Coelho da Rocha', '1999-11-16', 'Rio de Janeiro', 'RJ', 'Não', 'Não', 'Não', 'Não', 'Não', 'Não', 'Não', 'ativa', 'Não', 'Lote 224 Quadra 41'),
-(10, 'Jorcelane', 'jorcelane46@gmail.com', '03650842718', '12345678', '26627474', '992969980', '25550590', 'Rua belkiss', 'Coelho da Rocha', '1999-11-16', 'Rio de Janeiro', 'RJ', 'Não', 'Não', 'Não', 'Não', 'Não', 'Não', 'Nenhuma\r\n', 'ativa', 'Não', 'Lote 224 Quadra 41'),
-(11, 'Bruno Santos', 'bruno@gmail.com', '21828357254', '12345678', '25871777', '9123456789', '12345678', 'Vasco da Gama', 'Cosme damião', '1997-09-17', 'Nova iguaçu', 'IG', 'n', 'Não', 'Não', 'Não', 'Não', 'Não', 'Nenhuma', 'ativa', 'Não', 'Puta que pariu');
+(1, 'Paciente 1', 'paciente1@gmail.com', '17362020732', '12345678', '26627474', '994606169', '25550590', 'Rua belkiss', 'Coelho da Rocha', '1999-11-16', 'Rio de Janeiro', 'RJ', 'Não', 'Não', 'Não', 'Não', 'Não', 'N~', '', 'ativa', 'Não', 'Lote 224 Quadra 41'),
+(2, 'Paciente 2', 'paciente2@gmail.com', '03650842718', '12345678', '26627474', '992969980', '25550590', 'Rua belkiss', 'Coelho da Rocha', '1972-06-24', 'RIO DE JANEIRO', 'RJ', 'Não', 'Não', 'Não', 'Não', 'Não', 'N~', '', 'ativa', 'não', 'Não');
 
 -- --------------------------------------------------------
 
@@ -191,23 +175,15 @@ CREATE TABLE `procedimento` (
   `procedimento_tipo_id` int(11) DEFAULT NULL,
   `valor` double DEFAULT NULL,
   `obs` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `procedimento`
 --
 
 INSERT INTO `procedimento` (`id`, `atendimento_id`, `procedimento_tipo_id`, `valor`, `obs`) VALUES
-(5, 9, 2, 150, '123\r\n'),
-(6, 10, 9, 150, 'Nenhuma\r\n'),
-(7, 10, 2, 20, 'Nenhuma\r\n'),
-(8, 11, 9, 150, 'Nenhuma'),
-(9, 9, 2, 250, 'Nenhuma'),
-(10, 12, 2, 150, 'Nenhuma'),
-(11, 13, 1, 15, 'Exame de Revisão, valor fixo.'),
-(12, 11, 2, 300, 'Nenhuma\r\n'),
-(13, 12, 1, 100, 'Nada'),
-(14, 12, 9, 250, 'Nada');
+(1, 2, 2, 150, 'Nenhuma'),
+(2, 1, 2, 200, 'Nenhuma');
 
 -- --------------------------------------------------------
 
@@ -218,142 +194,141 @@ INSERT INTO `procedimento` (`id`, `atendimento_id`, `procedimento_tipo_id`, `val
 CREATE TABLE `procedimento_tipo` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `procedimento_tipo`
 --
 
 INSERT INTO `procedimento_tipo` (`id`, `nome`) VALUES
-(1, 'Revisão'),
-(2, 'Limpeza'),
-(9, 'Clareamento');
+(1, 'Limpeza'),
+(2, 'Restauração');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `atendimento`
+-- Índices para tabela `atendimento`
 --
 ALTER TABLE `atendimento`
-  ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `fk_a_paciente_id` (`paciente_id`) USING BTREE,
-  ADD KEY `fk_a_dentista_id` (`dentista_id`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `paciente_id` (`paciente_id`),
+  ADD KEY `dentista_id` (`dentista_id`);
 
 --
--- Indexes for table `atendimento_tipo`
+-- Índices para tabela `atendimento_tipo`
 --
 ALTER TABLE `atendimento_tipo`
   ADD PRIMARY KEY (`atendimentotipo_id`);
 
 --
--- Indexes for table `dentista`
+-- Índices para tabela `dentista`
 --
 ALTER TABLE `dentista`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `estoque`
+-- Índices para tabela `estoque`
 --
 ALTER TABLE `estoque`
   ADD PRIMARY KEY (`estoque_id`);
 
 --
--- Indexes for table `login`
+-- Índices para tabela `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indexes for table `paciente`
+-- Índices para tabela `paciente`
 --
 ALTER TABLE `paciente`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `procedimento`
+-- Índices para tabela `procedimento`
 --
 ALTER TABLE `procedimento`
-  ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `fk_p_procedimento_tipo_id` (`procedimento_tipo_id`) USING BTREE,
-  ADD KEY `fk_p_atendimento_id` (`atendimento_id`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `atendimento_id` (`atendimento_id`),
+  ADD KEY `procedimento_tipo_id` (`procedimento_tipo_id`);
 
 --
--- Indexes for table `procedimento_tipo`
+-- Índices para tabela `procedimento_tipo`
 --
 ALTER TABLE `procedimento_tipo`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `atendimento`
+-- AUTO_INCREMENT de tabela `atendimento`
 --
 ALTER TABLE `atendimento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `atendimento_tipo`
+-- AUTO_INCREMENT de tabela `atendimento_tipo`
 --
 ALTER TABLE `atendimento_tipo`
-  MODIFY `atendimentotipo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `atendimentotipo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `dentista`
+-- AUTO_INCREMENT de tabela `dentista`
 --
 ALTER TABLE `dentista`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `estoque`
+-- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `estoque_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `estoque_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT de tabela `login`
 --
 ALTER TABLE `login`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `paciente`
+-- AUTO_INCREMENT de tabela `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `procedimento`
+-- AUTO_INCREMENT de tabela `procedimento`
 --
 ALTER TABLE `procedimento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `procedimento_tipo`
+-- AUTO_INCREMENT de tabela `procedimento_tipo`
 --
 ALTER TABLE `procedimento_tipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
 -- Limitadores para a tabela `atendimento`
 --
 ALTER TABLE `atendimento`
-  ADD CONSTRAINT `fk_a_dentista_id` FOREIGN KEY (`dentista_id`) REFERENCES `dentista` (`id`),
-  ADD CONSTRAINT `fk_a_paciente_id` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`);
+  ADD CONSTRAINT `atendimento_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `atendimento_ibfk_2` FOREIGN KEY (`dentista_id`) REFERENCES `dentista` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `procedimento`
 --
 ALTER TABLE `procedimento`
-  ADD CONSTRAINT `fk_p_atendimento_id` FOREIGN KEY (`atendimento_id`) REFERENCES `atendimento` (`id`),
-  ADD CONSTRAINT `fk_p_procedimento_tipo_id` FOREIGN KEY (`procedimento_tipo_id`) REFERENCES `procedimento_tipo` (`id`);
+  ADD CONSTRAINT `procedimento_ibfk_1` FOREIGN KEY (`atendimento_id`) REFERENCES `atendimento` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `procedimento_ibfk_2` FOREIGN KEY (`procedimento_tipo_id`) REFERENCES `procedimento_tipo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -16,17 +16,25 @@
 	</head>
 <body>
 	<?php include 'header.php'?>
-    <h1 class = "text-center mb-3">Agendamento de Pacientes</h1>
+   <?php 
+            include_once 'conexao.php';
+
+            $sql = "SELECT NOW() As hoje";
+            $busca = mysqli_query($con, $sql);
+            if(mysqli_num_rows($busca) == 1){
+                $array = mysqli_fetch_array($busca);
+
+                $hoje1 = substr($array['hoje'], 0, -9);
+
+                $hoje = explode('-', $hoje1);
+                $newHoje = $hoje[2] . "-" . $hoje[1]. "-" . $hoje[0];
+            };
+
+        ?>
+    <h1 class = "text-center mb-3">Agendamento de Pacientes (<?php echo $newHoje?>)</h1>
         	<div class = "pl-5 pr-5">
                 <span class = "d-flex d-inline-flex mb-2">
-                        <form class="form-inline">
-                            <input class="form-control mr-2 ml-1" type="search" name = "nome">
-                            <button class="btn btn-primary btn-md mr-3" type="submit">Pesquisar Nome</button>
-                        </form>
-                        <form class="form-inline">
-                            <input class="form-control mr-2 ml-1" type="search" name = "dia">
-                            <button class="btn btn-primary btn-md mr-3" type="submit">Pesquisar Data</button>
-                        </form>
+                        <a href="agendaTodos.php"><button class="btn btn-danger btn-md mr-3 ml-1">Exibir Todos</button></a>
 
                     <button type="button" class="btn btn-primary btn-md ml-1" data-toggle="modal" data-target="#modal1">Marcar Consulta</button>
                     <input type="button" class ="btn btn-dark ml-5" onclick="window.print();" value="Imprimir">
@@ -143,7 +151,9 @@
                                     WHERE 
                                     a.paciente_id = p.id
                                     AND
-                                    a.dentista_id = d.id ORDER BY data, hora";
+                                    a.dentista_id = d.id
+                                    AND
+                                    data = left(now(),10) ORDER BY data, hora";
                                 $busca = mysqli_query($con, $sql);
 
                                 while($array = mysqli_fetch_array($busca)){

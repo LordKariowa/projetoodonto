@@ -1,9 +1,10 @@
+<?php include 'validar.php'?>
 <div class = "row">
 	<header class="bg-light border border-dark pb-2 mb-4 col-md-12">
 		<div class = "row">
 			<div id="menu" class="d-flex justify-content-start col-md-4">
 				<div class="d-inline-flex bd-highlight">
-			<img src="img/logo.png">
+					<img src="img/logo.png">
 				</div>
 			</div>
 			<div class="d-flex justify-content-center col-md-4">
@@ -22,10 +23,8 @@
 			<div class="d-flex justify-content-end col-md-4">
 				<div class="d-inline-flex bd-highlight mt-3 mr-2">
 					<div>
-						<h5>Seja Bem-vindo (a),</h5>
-						<h5>xxxx</h5>
-
-						<a href="login.php"><button type="button" class="btn btn-dark float-right">Sair</button></a>
+						<h5>Seja Bem-vindo (a)</h5>
+						<a href="sair.php"><button type="button" class="btn btn-dark float-right">Sair</button></a>
 					</div>
 				</div>
 			</div>
